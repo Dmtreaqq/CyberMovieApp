@@ -56,15 +56,23 @@
 		63B1196629F99E6800DB6D50 /* Cyber Movie */ = {
 			isa = PBXGroup;
 			children = (
-				63B1196729F99E6800DB6D50 /* AppDelegate.swift */,
-				63B1196929F99E6800DB6D50 /* SceneDelegate.swift */,
+				63B1197B29F9A32000DB6D50 /* Common */,
 				63B1196B29F99E6800DB6D50 /* ViewController.swift */,
 				63B1196D29F99E6800DB6D50 /* Main.storyboard */,
+			);
+			path = "Cyber Movie";
+			sourceTree = "<group>";
+		};
+		63B1197B29F9A32000DB6D50 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				63B1196729F99E6800DB6D50 /* AppDelegate.swift */,
+				63B1196929F99E6800DB6D50 /* SceneDelegate.swift */,
 				63B1197029F99E6900DB6D50 /* Assets.xcassets */,
 				63B1197229F99E6900DB6D50 /* LaunchScreen.storyboard */,
 				63B1197529F99E6900DB6D50 /* Info.plist */,
 			);
-			path = "Cyber Movie";
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +297,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NW45U774Y9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cyber Movie/Info.plist";
+				INFOPLIST_FILE = "Cyber Movie/Common/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +325,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NW45U774Y9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cyber Movie/Info.plist";
+				INFOPLIST_FILE = "Cyber Movie/Common/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
