@@ -61,14 +61,46 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="i43-Gf-K0d">
+                                <rect key="frame" x="0.0" y="59" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="w4t-tf-ucc"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="akg-FV-pYx">
+                                <rect key="frame" x="20" y="145" width="353" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XnI-fH-DGY">
+                                <rect key="frame" x="0.0" y="196" width="393" height="573"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XnI-fH-DGY" secondAttribute="trailing" id="E8o-wR-6Fr"/>
+                            <constraint firstItem="XnI-fH-DGY" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="ErL-5B-Igb"/>
+                            <constraint firstItem="i43-Gf-K0d" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="PiL-0S-1Hh"/>
+                            <constraint firstItem="XnI-fH-DGY" firstAttribute="top" secondItem="akg-FV-pYx" secondAttribute="bottom" constant="20" id="ahp-CX-DjN"/>
+                            <constraint firstItem="akg-FV-pYx" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="c0O-3a-D1A"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="XnI-fH-DGY" secondAttribute="bottom" id="dVp-jW-qsi"/>
+                            <constraint firstItem="i43-Gf-K0d" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="dtj-4Z-nPo"/>
+                            <constraint firstItem="i43-Gf-K0d" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="gHU-Oo-dg0"/>
+                            <constraint firstItem="akg-FV-pYx" firstAttribute="top" secondItem="i43-Gf-K0d" secondAttribute="bottom" constant="30" id="mfB-gi-2VG"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="akg-FV-pYx" secondAttribute="trailing" constant="20" id="v24-eT-dgH"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Movies" image="magnifyingglass" catalog="system" id="Y6Y-Uz-knC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1011" y="-1616"/>
+            <point key="canvasLocation" x="-1011.4503816793892" y="-1616.1971830985917"/>
         </scene>
     </scenes>
     <resources>
