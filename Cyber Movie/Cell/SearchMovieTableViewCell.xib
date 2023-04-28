@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchMovieTableViewCell" rowHeight="323" id="KGk-i7-Jjw" customClass="SearchMovieTableViewCell" customModule="Cyber_Movie" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="559" height="323"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="559" height="323"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchLogo" translatesAutoresizingMaskIntoConstraints="NO" id="L5W-Aq-0lf">
+                        <rect key="frame" x="16" y="8" width="145" height="240"/>
+                        <color key="backgroundColor" red="0.058823529409999999" green="0.1058823529" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="240" id="WBt-8o-fge"/>
+                            <constraint firstAttribute="width" constant="145" id="hek-ey-EGm"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7Y-lS-4dg">
+                        <rect key="frame" x="181" y="7.9999999999999982" width="48.333333333333343" height="31.333333333333329"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Overview" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="tO4-mG-Osv">
+                        <rect key="frame" x="181" y="47.333333333333343" width="140" height="185"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="140" id="KTT-wx-fsJ"/>
+                            <constraint firstAttribute="height" constant="185" id="V14-sv-1pZ"/>
+                        </constraints>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="p7Y-lS-4dg" firstAttribute="leading" secondItem="L5W-Aq-0lf" secondAttribute="trailing" constant="20" id="5hi-PG-xBx"/>
+                    <constraint firstItem="L5W-Aq-0lf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="MGh-md-6a1"/>
+                    <constraint firstItem="tO4-mG-Osv" firstAttribute="leading" secondItem="L5W-Aq-0lf" secondAttribute="trailing" constant="20" id="MbZ-HC-koF"/>
+                    <constraint firstItem="p7Y-lS-4dg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="RyY-5t-DJd"/>
+                    <constraint firstAttribute="bottom" secondItem="L5W-Aq-0lf" secondAttribute="bottom" constant="75" id="fmu-in-wqJ"/>
+                    <constraint firstItem="L5W-Aq-0lf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="rSY-2k-fP1"/>
+                    <constraint firstItem="tO4-mG-Osv" firstAttribute="top" secondItem="p7Y-lS-4dg" secondAttribute="bottom" constant="8" id="yb5-fR-6EX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="movieDescriptionTextView" destination="tO4-mG-Osv" id="m8f-zS-41q"/>
+                <outlet property="movieImageView" destination="L5W-Aq-0lf" id="xC2-md-0yZ"/>
+                <outlet property="movieTitleLabel" destination="p7Y-lS-4dg" id="f4k-Kv-AJH"/>
+            </connections>
+            <point key="canvasLocation" x="154.96183206106869" y="118.66197183098592"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="LaunchLogo" width="169" height="147"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
