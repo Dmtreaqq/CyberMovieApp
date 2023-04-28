@@ -97,6 +97,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Movies" image="magnifyingglass" catalog="system" id="Y6Y-Uz-knC"/>
+                    <connections>
+                        <outlet property="searchMoviesTableView" destination="XnI-fH-DGY" id="z5U-d3-6Bh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
