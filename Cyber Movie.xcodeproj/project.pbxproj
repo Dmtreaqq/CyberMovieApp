@@ -13,6 +13,11 @@
 		63B1196F29F99E6800DB6D50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B1196D29F99E6800DB6D50 /* Main.storyboard */; };
 		63B1197129F99E6900DB6D50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B1197029F99E6900DB6D50 /* Assets.xcassets */; };
 		63B1197429F99E6900DB6D50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B1197229F99E6900DB6D50 /* LaunchScreen.storyboard */; };
+		63B1198629FBB5CE00DB6D50 /* Movies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B1198529FBB5CE00DB6D50 /* Movies.storyboard */; };
+		63B1198829FBB61500DB6D50 /* SearchMoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1198729FBB61500DB6D50 /* SearchMoviesVC.swift */; };
+		63B1198A29FBE13700DB6D50 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1198929FBE13700DB6D50 /* CustomTabBarController.swift */; };
+		63B1198D29FBF2DB00DB6D50 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1198C29FBF2DB00DB6D50 /* FavoritesVC.swift */; };
+		63B1198F29FBF44900DB6D50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1198E29FBF44900DB6D50 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		63B1197029F99E6900DB6D50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B1197329F99E6900DB6D50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63B1197529F99E6900DB6D50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63B1198529FBB5CE00DB6D50 /* Movies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Movies.storyboard; sourceTree = "<group>"; };
+		63B1198729FBB61500DB6D50 /* SearchMoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMoviesVC.swift; sourceTree = "<group>"; };
+		63B1198929FBE13700DB6D50 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		63B1198C29FBF2DB00DB6D50 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
+		63B1198E29FBF44900DB6D50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,7 @@
 				63B1197E29FAE5F300DB6D50 /* Resources */,
 				63B1196B29F99E6800DB6D50 /* LoginVC.swift */,
 				63B1196D29F99E6800DB6D50 /* Main.storyboard */,
+				63B1198E29FBF44900DB6D50 /* Constants.swift */,
 			);
 			path = "Cyber Movie";
 			sourceTree = "<group>";
@@ -81,6 +92,10 @@
 		63B1197C29FAE4A400DB6D50 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63B1198929FBE13700DB6D50 /* CustomTabBarController.swift */,
+				63B1198529FBB5CE00DB6D50 /* Movies.storyboard */,
+				63B1198729FBB61500DB6D50 /* SearchMoviesVC.swift */,
+				63B1198C29FBF2DB00DB6D50 /* FavoritesVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -160,6 +175,7 @@
 				63B1197429F99E6900DB6D50 /* LaunchScreen.storyboard in Resources */,
 				63B1197129F99E6900DB6D50 /* Assets.xcassets in Resources */,
 				63B1196F29F99E6800DB6D50 /* Main.storyboard in Resources */,
+				63B1198629FBB5CE00DB6D50 /* Movies.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,7 +187,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				63B1196C29F99E6800DB6D50 /* LoginVC.swift in Sources */,
+				63B1198829FBB61500DB6D50 /* SearchMoviesVC.swift in Sources */,
+				63B1198D29FBF2DB00DB6D50 /* FavoritesVC.swift in Sources */,
 				63B1196829F99E6800DB6D50 /* AppDelegate.swift in Sources */,
+				63B1198F29FBF44900DB6D50 /* Constants.swift in Sources */,
+				63B1198A29FBE13700DB6D50 /* CustomTabBarController.swift in Sources */,
 				63B1196A29F99E6800DB6D50 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

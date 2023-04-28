@@ -17,13 +17,18 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(red: 15/255, green: 27/255, blue: 43/255, alpha: 1)
+        navigationItem.hidesBackButton = true
+        
+        view.backgroundColor = Color.mainBG
         
         setupUI()
     }
-
+    
     @IBAction func signinButtonPressed(_ sender: Any) {
-        print("User logged in")
+        let sb = UIStoryboard(name: "Movies", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "CustomTabBarController")
+        
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     func setupUI() {
