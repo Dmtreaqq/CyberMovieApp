@@ -22,6 +22,7 @@
 		63B1199429FC03FA00DB6D50 /* SearchMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1199229FC03FA00DB6D50 /* SearchMovieTableViewCell.xib */; };
 		63C77A4C29FD51B400628200 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C77A4B29FD51B400628200 /* Movie.swift */; };
 		63C77A4E29FD525500628200 /* ResponseMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C77A4D29FD525500628200 /* ResponseMovie.swift */; };
+		E25E38BFF82A4201003FA78B /* Pods_Cyber_Movie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17A3878DF2E09549FE5D82C /* Pods_Cyber_Movie.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,9 @@
 		63B1199229FC03FA00DB6D50 /* SearchMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieTableViewCell.xib; sourceTree = "<group>"; };
 		63C77A4B29FD51B400628200 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		63C77A4D29FD525500628200 /* ResponseMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMovie.swift; sourceTree = "<group>"; };
+		AF70068A446FDF7A67562AF0 /* Pods-Cyber Movie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cyber Movie.release.xcconfig"; path = "Target Support Files/Pods-Cyber Movie/Pods-Cyber Movie.release.xcconfig"; sourceTree = "<group>"; };
+		BDE3D2C9A49CDDBF77883E63 /* Pods-Cyber Movie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cyber Movie.debug.xcconfig"; path = "Target Support Files/Pods-Cyber Movie/Pods-Cyber Movie.debug.xcconfig"; sourceTree = "<group>"; };
+		F17A3878DF2E09549FE5D82C /* Pods_Cyber_Movie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cyber_Movie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E25E38BFF82A4201003FA78B /* Pods_Cyber_Movie.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +65,8 @@
 			children = (
 				63B1196629F99E6800DB6D50 /* Cyber Movie */,
 				63B1196529F99E6800DB6D50 /* Products */,
+				B6ACBD1A0D795D99C969D73E /* Pods */,
+				658C3B345C1955C2B7F4CD06 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +141,24 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		658C3B345C1955C2B7F4CD06 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F17A3878DF2E09549FE5D82C /* Pods_Cyber_Movie.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6ACBD1A0D795D99C969D73E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BDE3D2C9A49CDDBF77883E63 /* Pods-Cyber Movie.debug.xcconfig */,
+				AF70068A446FDF7A67562AF0 /* Pods-Cyber Movie.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63B1197829F99E6900DB6D50 /* Build configuration list for PBXNativeTarget "Cyber Movie" */;
 			buildPhases = (
+				1BF6D30562C0D105BD1124B5 /* [CP] Check Pods Manifest.lock */,
 				63B1196029F99E6800DB6D50 /* Sources */,
 				63B1196129F99E6800DB6D50 /* Frameworks */,
 				63B1196229F99E6800DB6D50 /* Resources */,
+				370424A7C8B070FF8F6046AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,6 +228,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BF6D30562C0D105BD1124B5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cyber Movie-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		370424A7C8B070FF8F6046AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cyber Movie/Pods-Cyber Movie-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cyber Movie/Pods-Cyber Movie-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cyber Movie/Pods-Cyber Movie-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63B1196029F99E6800DB6D50 /* Sources */ = {
@@ -358,6 +427,7 @@
 		};
 		63B1197929F99E6900DB6D50 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BDE3D2C9A49CDDBF77883E63 /* Pods-Cyber Movie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -371,6 +441,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -386,6 +457,7 @@
 		};
 		63B1197A29F99E6900DB6D50 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF70068A446FDF7A67562AF0 /* Pods-Cyber Movie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -399,6 +471,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
