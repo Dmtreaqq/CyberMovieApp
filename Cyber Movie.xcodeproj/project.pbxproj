@@ -22,6 +22,7 @@
 		63B1199429FC03FA00DB6D50 /* SearchMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1199229FC03FA00DB6D50 /* SearchMovieTableViewCell.xib */; };
 		63C77A4C29FD51B400628200 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C77A4B29FD51B400628200 /* Movie.swift */; };
 		63C77A4E29FD525500628200 /* ResponseMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C77A4D29FD525500628200 /* ResponseMovie.swift */; };
+		63E6715629FD587100B44F1C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E6715529FD587100B44F1C /* NetworkService.swift */; };
 		E25E38BFF82A4201003FA78B /* Pods_Cyber_Movie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17A3878DF2E09549FE5D82C /* Pods_Cyber_Movie.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		63B1199229FC03FA00DB6D50 /* SearchMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieTableViewCell.xib; sourceTree = "<group>"; };
 		63C77A4B29FD51B400628200 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		63C77A4D29FD525500628200 /* ResponseMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMovie.swift; sourceTree = "<group>"; };
+		63E6715529FD587100B44F1C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		AF70068A446FDF7A67562AF0 /* Pods-Cyber Movie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cyber Movie.release.xcconfig"; path = "Target Support Files/Pods-Cyber Movie/Pods-Cyber Movie.release.xcconfig"; sourceTree = "<group>"; };
 		BDE3D2C9A49CDDBF77883E63 /* Pods-Cyber Movie.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cyber Movie.debug.xcconfig"; path = "Target Support Files/Pods-Cyber Movie/Pods-Cyber Movie.debug.xcconfig"; sourceTree = "<group>"; };
 		F17A3878DF2E09549FE5D82C /* Pods_Cyber_Movie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cyber_Movie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 				63B1196B29F99E6800DB6D50 /* LoginVC.swift */,
 				63B1196D29F99E6800DB6D50 /* Main.storyboard */,
 				63B1198E29FBF44900DB6D50 /* Constants.swift */,
+				63E6715529FD587100B44F1C /* NetworkService.swift */,
 			);
 			path = "Cyber Movie";
 			sourceTree = "<group>";
@@ -155,7 +158,6 @@
 				BDE3D2C9A49CDDBF77883E63 /* Pods-Cyber Movie.debug.xcconfig */,
 				AF70068A446FDF7A67562AF0 /* Pods-Cyber Movie.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -276,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63E6715629FD587100B44F1C /* NetworkService.swift in Sources */,
 				63B1196C29F99E6800DB6D50 /* LoginVC.swift in Sources */,
 				63B1198829FBB61500DB6D50 /* SearchMoviesVC.swift in Sources */,
 				63B1199329FC03FA00DB6D50 /* SearchMovieTableViewCell.swift in Sources */,

@@ -3,5 +3,6 @@ target 'Cyber Movie' do
 platform :ios, '16.0'
 
   pod 'Alamofire'
+  pod 'SDWebImage'
 
 end

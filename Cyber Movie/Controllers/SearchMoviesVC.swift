@@ -10,7 +10,7 @@ import UIKit
 class SearchMoviesVC: UIViewController {
     @IBOutlet weak var searchMoviesTableView: UITableView!
     
-    let arr = ["Movie 1", "Some Movie", "Another Movie"]
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +19,8 @@ class SearchMoviesVC: UIViewController {
 
         setupUI()
         registerTableViewCell()
+        
+        makeRequest()
     }
     
     func setupUI() {
@@ -28,11 +30,20 @@ class SearchMoviesVC: UIViewController {
     func registerTableViewCell() {
         searchMoviesTableView.register(UINib(nibName: "SearchMovieTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchMovieTableViewCell")
     }
+    
+    func makeRequest() {
+        NetworkService.instance.searchMovie(query: "Steins") { moviesArr in
+//            print(moviesArr)
+            self.movies = moviesArr
+            
+            self.searchMoviesTableView.reloadData()
+        }
+    }
 }
 
 extension SearchMoviesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arr.count
+        movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,7 +53,9 @@ extension SearchMoviesVC: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configure(title: arr[indexPath.row], description: arr[indexPath.row])
+        let movie = movies[indexPath.row]
+        
+        cell.configure(title: movie.title ?? "No title", description: movie.overview ?? "No overview", poster: movie.poster_path)
         
         //        let cell = UITableViewCell()
 //
