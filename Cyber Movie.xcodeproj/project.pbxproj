@@ -20,6 +20,8 @@
 		63B1198F29FBF44900DB6D50 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1198E29FBF44900DB6D50 /* Constants.swift */; };
 		63B1199329FC03FA00DB6D50 /* SearchMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B1199129FC03FA00DB6D50 /* SearchMovieTableViewCell.swift */; };
 		63B1199429FC03FA00DB6D50 /* SearchMovieTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63B1199229FC03FA00DB6D50 /* SearchMovieTableViewCell.xib */; };
+		63C77A4C29FD51B400628200 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C77A4B29FD51B400628200 /* Movie.swift */; };
+		63C77A4E29FD525500628200 /* ResponseMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C77A4D29FD525500628200 /* ResponseMovie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		63B1198E29FBF44900DB6D50 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		63B1199129FC03FA00DB6D50 /* SearchMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieTableViewCell.swift; sourceTree = "<group>"; };
 		63B1199229FC03FA00DB6D50 /* SearchMovieTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieTableViewCell.xib; sourceTree = "<group>"; };
+		63C77A4B29FD51B400628200 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		63C77A4D29FD525500628200 /* ResponseMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMovie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +112,8 @@
 		63B1197D29FAE5C600DB6D50 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				63C77A4B29FD51B400628200 /* Movie.swift */,
+				63C77A4D29FD525500628200 /* ResponseMovie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,8 +211,10 @@
 				63B1198829FBB61500DB6D50 /* SearchMoviesVC.swift in Sources */,
 				63B1199329FC03FA00DB6D50 /* SearchMovieTableViewCell.swift in Sources */,
 				63B1198D29FBF2DB00DB6D50 /* FavoritesVC.swift in Sources */,
+				63C77A4E29FD525500628200 /* ResponseMovie.swift in Sources */,
 				63B1196829F99E6800DB6D50 /* AppDelegate.swift in Sources */,
 				63B1198F29FBF44900DB6D50 /* Constants.swift in Sources */,
+				63C77A4C29FD51B400628200 /* Movie.swift in Sources */,
 				63B1198A29FBE13700DB6D50 /* CustomTabBarController.swift in Sources */,
 				63B1196A29F99E6800DB6D50 /* SceneDelegate.swift in Sources */,
 			);
