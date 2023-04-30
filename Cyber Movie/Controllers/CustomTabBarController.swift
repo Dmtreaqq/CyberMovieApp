@@ -7,20 +7,20 @@
 
 import UIKit
 
-
-
 class CustomTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.tintColor = Color.buttonBG
-        tabBar.barTintColor = Color.buttonBG
-        
         navigationItem.hidesBackButton = true
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
         
+        setupUI()
+    }
+    
+    func setupUI() {
+        tabBar.tintColor = Color.buttonBG
+        tabBar.barTintColor = Color.buttonBG
     }
     
     @objc func logout() {
