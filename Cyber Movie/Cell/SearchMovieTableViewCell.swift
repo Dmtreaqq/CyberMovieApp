@@ -9,18 +9,35 @@ import UIKit
 import SDWebImage
 
 class SearchMovieTableViewCell: UITableViewCell {
-    @IBOutlet weak var movieDescriptionTextView: UITextView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieImageView: UIImageView!
+    @IBOutlet weak var releaseYearLabel: UILabel!
+    @IBOutlet weak var movieRatingLabel: UILabel!
+    @IBOutlet weak var movieVotesRatingLabel: UILabel!
     
-    func configure(title: String, description: String, poster: String?) {
+    func configure(title: String, release: String, poster: String?, rating: String, votes: String) {
+        setupUI()
+        
         movieTitleLabel.text = title
-        movieDescriptionTextView.text = description
+        releaseYearLabel.text = release
+        movieRatingLabel.text = rating
+        movieVotesRatingLabel.text = "Votes: \(votes)"
         
         if let poster {
             let posterPathString = Config.API_MOVIE_IMG_HOST + poster
             let posterPath: URL? = URL(string: posterPathString)
             movieImageView.sd_setImage(with: posterPath)
         }
+    }
+    
+    func setupUI() {
+        backgroundColor = Color.mainBG
+        
+        selectionStyle = .none
+        
+        movieTitleLabel.textColor = .white
+        releaseYearLabel.textColor = .white
+        movieRatingLabel.textColor = .white
+        movieVotesRatingLabel.textColor = .white
     }
 }

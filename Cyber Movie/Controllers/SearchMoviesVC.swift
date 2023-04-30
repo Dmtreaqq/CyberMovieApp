@@ -14,7 +14,7 @@ class SearchMoviesVC: UIViewController {
     
     var movies: [Movie] = []
     var timer: Timer?
-    var searchChoice = ""
+    var searchChoice = "movie"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,6 @@ class SearchMoviesVC: UIViewController {
         setupUI()
         registerTableViewCell()
     }
-    
-    
     
     func setupUI() {
         view.backgroundColor = Color.mainBG
@@ -75,7 +73,7 @@ extension SearchMoviesVC: UITableViewDataSource {
         }
         
         let movie = movies[indexPath.row]
-        cell.configure(title: movie.title ?? "No title", description: movie.overview ?? "No overview", poster: movie.poster_path)
+        cell.configure(title: movie.title ?? "No title", release: movie.release_date ?? "1800", poster: movie.poster_path, rating: String(movie.vote_average ?? 0), votes: String(movie.vote_count ?? 0))
         
         return cell
     }

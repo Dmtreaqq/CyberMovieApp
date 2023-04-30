@@ -19,7 +19,6 @@ final class NetworkService {
         
         AF.request(url).responseDecodable(of: ResponseMovie.self) { response in
             let moviesResponse = response.value?.results ?? []
-            
             completion(moviesResponse)
         }
     }
