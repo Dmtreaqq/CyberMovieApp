@@ -73,9 +73,12 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="akg-FV-pYx">
                                 <rect key="frame" x="20" y="145" width="353" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Movie"/>
+                                    <segment title="TV Show"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="Y6W-OH-hqX" eventType="valueChanged" id="VJo-ZU-Pio"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="XnI-fH-DGY">
                                 <rect key="frame" x="0.0" y="196" width="393" height="573"/>
@@ -101,6 +104,7 @@
                     <connections>
                         <outlet property="moviesSearchBar" destination="i43-Gf-K0d" id="eP8-V1-QYm"/>
                         <outlet property="searchMoviesTableView" destination="XnI-fH-DGY" id="z5U-d3-6Bh"/>
+                        <outlet property="searchSegmentedControl" destination="akg-FV-pYx" id="old-MS-zKu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
