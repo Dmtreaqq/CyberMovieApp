@@ -8,19 +8,22 @@
 import UIKit
 
 class SearchMoviesVC: UIViewController {
+    @IBOutlet weak var moviesSearchBar: UISearchBar!
     @IBOutlet weak var searchMoviesTableView: UITableView!
     
     var movies: [Movie] = []
+    
+    var timer: Timer?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchMoviesTableView.dataSource = self
+        moviesSearchBar.delegate = self
 
         setupUI()
         registerTableViewCell()
-        
-        makeRequest()
     }
     
     func setupUI() {
@@ -31,12 +34,23 @@ class SearchMoviesVC: UIViewController {
         searchMoviesTableView.register(UINib(nibName: "SearchMovieTableViewCell", bundle: nil), forCellReuseIdentifier: "SearchMovieTableViewCell")
     }
     
-    func makeRequest() {
-        NetworkService.instance.searchMovie(query: "Steins") { moviesArr in
+    func makeRequest(query: String) {
+        NetworkService.instance.searchMovie(query: query) { moviesArr in
 //            print(moviesArr)
             self.movies = moviesArr
             
             self.searchMoviesTableView.reloadData()
+        }
+    }
+}
+
+extension SearchMoviesVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        timer?.invalidate()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
+            self.makeRequest(query: searchText)
+            
+            searchBar.endEditing(true)
         }
     }
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -98,6 +99,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Movies" image="magnifyingglass" catalog="system" id="Y6Y-Uz-knC"/>
                     <connections>
+                        <outlet property="moviesSearchBar" destination="i43-Gf-K0d" id="eP8-V1-QYm"/>
                         <outlet property="searchMoviesTableView" destination="XnI-fH-DGY" id="z5U-d3-6Bh"/>
                     </connections>
                 </viewController>
