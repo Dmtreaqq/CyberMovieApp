@@ -18,9 +18,7 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         
         navigationItem.hidesBackButton = true
-        
-        view.backgroundColor = Color.mainBG
-        
+                
         setupUI()
     }
     
@@ -28,10 +26,12 @@ class LoginVC: UIViewController {
         let sb = UIStoryboard(name: "Movies", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "CustomTabBarController")
         
-        navigationController?.pushViewController(vc, animated: false)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func setupUI() {
+        view.backgroundColor = Color.mainBG
+        
         loginScreenTitleLabel.text = "Login to Your Account"
         loginScreenTitleLabel.textColor = .white
         
