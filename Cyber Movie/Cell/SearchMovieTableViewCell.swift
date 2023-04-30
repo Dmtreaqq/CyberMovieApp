@@ -33,6 +33,8 @@ class SearchMovieTableViewCell: UITableViewCell {
     func setupUI() {
         backgroundColor = Color.mainBG
         
+        movieImageView.layer.cornerRadius = 15
+        
         selectionStyle = .none
         
         movieTitleLabel.textColor = .white

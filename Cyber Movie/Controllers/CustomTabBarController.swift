@@ -19,6 +19,7 @@ class CustomTabBarController: UITabBarController {
     }
     
     func setupUI() {
+        tabBar.backgroundColor = Color.mainBGtab
         tabBar.tintColor = Color.buttonBG
         tabBar.barTintColor = Color.buttonBG
     }
@@ -27,5 +28,10 @@ class CustomTabBarController: UITabBarController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "LoginVC")
         navigationController?.pushViewController(vc, animated: false)
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+        feedbackGenerator.impactOccurred(intensity: 1)
     }
 }
