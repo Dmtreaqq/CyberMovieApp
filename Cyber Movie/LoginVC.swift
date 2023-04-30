@@ -36,6 +36,8 @@ class LoginVC: UIViewController {
         loginScreenTitleLabel.textColor = .white
         
         signinButton.setTitle("Sign in", for: .normal)
+        signinButton.tintColor = Color.buttonBG
+        
         
         loginTextField.placeholder = "Enter your login"
         

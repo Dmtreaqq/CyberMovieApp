@@ -20,6 +20,7 @@ class SearchMoviesVC: UIViewController {
         super.viewDidLoad()
         
         searchMoviesTableView.dataSource = self
+        searchMoviesTableView.delegate = self
         moviesSearchBar.delegate = self
 
         setupUI()
@@ -28,6 +29,15 @@ class SearchMoviesVC: UIViewController {
     
     func setupUI() {
         view.backgroundColor = Color.mainBG
+        
+        searchMoviesTableView.backgroundColor = Color.mainBG
+        
+        moviesSearchBar.barTintColor = Color.mainBG
+        moviesSearchBar.searchTextField.textColor = .white
+        
+        searchSegmentedControl.selectedSegmentTintColor = Color.buttonBG
+        searchSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        searchSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
     }
     
     func registerTableViewCell() {
@@ -41,6 +51,9 @@ class SearchMoviesVC: UIViewController {
         } else if sender.selectedSegmentIndex == 1 {
             searchChoice = "tv"
         }
+        
+        let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+        feedbackGenerator.impactOccurred(intensity: 1)
     }
     
     func searchMovieBy(title: String) {
@@ -76,6 +89,18 @@ extension SearchMoviesVC: UITableViewDataSource {
         cell.configure(title: movie.title ?? "No title", release: movie.release_date ?? "1800", poster: movie.poster_path, rating: String(movie.vote_average ?? 0), votes: String(movie.vote_count ?? 0))
         
         return cell
+    }
+}
+
+extension SearchMoviesVC: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if moviesSearchBar.isFirstResponder {
+            moviesSearchBar.resignFirstResponder()
+        }
+        
+        if moviesSearchBar.searchTextField.isFirstResponder {
+            moviesSearchBar.searchTextField.resignFirstResponder()
+        }
     }
 }
 
