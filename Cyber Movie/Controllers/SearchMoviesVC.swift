@@ -10,9 +10,11 @@ import UIKit
 class SearchMoviesVC: UIViewController {
     @IBOutlet weak var moviesSearchBar: UISearchBar!
     @IBOutlet weak var searchMoviesTableView: UITableView!
+    @IBOutlet weak var searchSegmentedControl: UISegmentedControl!
     
     var movies: [Movie] = []
     var timer: Timer?
+    var searchChoice = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class SearchMoviesVC: UIViewController {
         registerTableViewCell()
     }
     
+    
+    
     func setupUI() {
         view.backgroundColor = Color.mainBG
     }
@@ -33,8 +37,16 @@ class SearchMoviesVC: UIViewController {
         searchMoviesTableView.register(nib, forCellReuseIdentifier: "SearchMovieTableViewCell")
     }
     
+    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            searchChoice = "movie"
+        } else if sender.selectedSegmentIndex == 1 {
+            searchChoice = "tv"
+        }
+    }
+    
     func searchMovieBy(title: String) {
-        NetworkService.instance.searchMovie(title) { moviesArr in
+        NetworkService.instance.search(for: searchChoice, title) { moviesArr in
             self.movies = moviesArr
             self.searchMoviesTableView.reloadData()
         }

@@ -12,8 +12,8 @@ final class NetworkService {
     static let instance = NetworkService()
     private init() {}
     
-    func searchMovie(_ query: String, completion: @escaping(([Movie]) -> ())) {
-        let baseUrl: String = "\(Config.API_MOVIEDB_HOST)/3/search/movie"
+    func search(for searchType: String, _ query: String,  completion: @escaping(([Movie]) -> ())) {
+        let baseUrl: String = "\(Config.API_MOVIEDB_HOST)/3/search/\(searchType)"
         let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)&query=\(query)"
         let url: String = baseUrl + urlParams
         
