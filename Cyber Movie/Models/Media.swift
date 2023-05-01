@@ -13,13 +13,19 @@ struct Media: Codable {
     var name: String
     var popularity: Double
     var posterPath: String
+    var backdropPath: String
+    var releaseDate: String
     var video: Bool
+    var voteCount: Int
 
     init(from movie: Movie) {
         self.id = movie.id
         self.name = movie.originalTitle
         self.popularity = movie.popularity
+        self.releaseDate = movie.releaseDate
         self.posterPath = movie.posterPath ?? ""
+        self.backdropPath = movie.backdropPath ?? ""
+        self.voteCount = movie.voteCount
         self.video = movie.video
     }
 
@@ -27,7 +33,10 @@ struct Media: Codable {
         self.id = tv.id
         self.name = tv.originalName
         self.popularity = tv.popularity
+        self.releaseDate = tv.firstAirDate
         self.posterPath = tv.posterPath ?? ""
+        self.backdropPath = tv.backdropPath ?? ""
+        self.voteCount = tv.voteCount
         self.video = false
     }
 }

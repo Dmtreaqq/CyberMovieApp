@@ -117,5 +117,21 @@ extension SearchMoviesVC: UITableViewDelegate {
             moviesSearchBar.searchTextField.resignFirstResponder()
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "MovieDetails", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "MovieDetailsVC") as? MovieDetailsVC else {
+            return
+        }
+        
+        let media = mediaContent[indexPath.row]
+        
+        vc.mediaTitle = media.name
+        vc.mediaImageString = media.backdropPath
+        vc.releaseYear = media.releaseDate
+        vc.votesCount = media.voteCount
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
