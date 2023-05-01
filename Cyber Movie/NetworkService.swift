@@ -12,14 +12,14 @@ final class NetworkService {
     static let instance = NetworkService()
     private init() {}
     
-    func search(for searchType: String, _ query: String,  completion: @escaping(([Movie]) -> ())) {
+    func searchFor<T: Codable>(model: T.Type, _ searchType: String, _ query: String,  completion: @escaping((T) -> ())) {
         let baseUrl: String = "\(Config.API_MOVIEDB_HOST)/3/search/\(searchType)"
         let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)&query=\(query)"
         let url: String = baseUrl + urlParams
         
-        AF.request(url).responseDecodable(of: ResponseMovie.self) { response in
-            let moviesResponse = response.value?.results ?? []
-            completion(moviesResponse)
+        AF.request(url).responseDecodable(of: T.self) { response in
+            let moviesResponse = response.value
+            completion(moviesResponse!)
         }
     }
 }

@@ -5,9 +5,9 @@
 //  Created by Дмитро Павлов on 29.04.2023.
 //
 
-struct ResponseMovie: Codable {
+struct ResponseTV: Codable {
     var page: Int
-    var results: [Movie]
+    var results: [TvShow]
     var totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -16,4 +16,3 @@ struct ResponseMovie: Codable {
         case totalResults = "total_results"
     }
 }
-

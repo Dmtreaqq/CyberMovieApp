@@ -12,7 +12,7 @@ class SearchMoviesVC: UIViewController {
     @IBOutlet weak var searchMoviesTableView: UITableView!
     @IBOutlet weak var searchSegmentedControl: UISegmentedControl!
     
-    var movies: [Movie] = []
+    var mediaContent: [Media] = []
     var timer: Timer?
     var searchChoice = "movie"
     
@@ -57,8 +57,17 @@ class SearchMoviesVC: UIViewController {
     }
     
     func searchMovieBy(title: String) {
-        NetworkService.instance.search(for: searchChoice, title) { moviesArr in
-            self.movies = moviesArr
+        NetworkService.instance.searchFor(model: ResponseMovie.self, searchChoice, title) { movieResponse in
+            let moviesArr = movieResponse.results
+            self.mediaContent = moviesArr.map({ Media(from: $0) })
+            self.searchMoviesTableView.reloadData()
+        }
+    }
+    
+    func searchTvShowBy(title: String) {
+        NetworkService.instance.searchFor(model: ResponseTV.self, searchChoice, title) { tvShowResponse in
+            let tvShowsArr = tvShowResponse.results
+            self.mediaContent = tvShowsArr.map({ Media(from: $0) })
             self.searchMoviesTableView.reloadData()
         }
     }
@@ -68,7 +77,13 @@ extension SearchMoviesVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
-            self.searchMovieBy(title: searchText)
+            
+            if self.searchChoice == "movie" {
+                self.searchMovieBy(title: searchText)
+            } else if self.searchChoice == "tv" {
+                self.searchTvShowBy(title: searchText)
+            }
+            
             searchBar.endEditing(true)
         }
     }
@@ -76,7 +91,7 @@ extension SearchMoviesVC: UISearchBarDelegate {
 
 extension SearchMoviesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        movies.count
+        mediaContent.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,8 +100,8 @@ extension SearchMoviesVC: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let movie = movies[indexPath.row]
-        cell.configure(title: movie.title ?? "No title", release: movie.release_date ?? "1800", poster: movie.poster_path, rating: String(movie.vote_average ?? 0), votes: String(movie.vote_count ?? 0))
+        let movie = mediaContent[indexPath.row]
+        cell.configure(title: movie.name , release: String(movie.popularity) , poster: movie.posterPath, rating: String(movie.popularity), votes: String(movie.popularity))
         
         return cell
     }
