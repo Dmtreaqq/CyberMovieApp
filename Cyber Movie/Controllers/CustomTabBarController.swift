@@ -15,6 +15,12 @@ class CustomTabBarController: UITabBarController {
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logout))
         
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.barTintColor = .white
+            navigationBar.tintColor = .white
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        }
+        
         setupUI()
     }
     
