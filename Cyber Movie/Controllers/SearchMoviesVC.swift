@@ -25,6 +25,8 @@ class SearchMoviesVC: UIViewController {
 
         setupUI()
         registerTableViewCell()
+        
+        getTrendingMovies()
     }
     
     func setupUI() {
@@ -46,10 +48,25 @@ class SearchMoviesVC: UIViewController {
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        let searchFieldText = moviesSearchBar.searchTextField.text ?? ""
+        
         if sender.selectedSegmentIndex == 0 {
             searchChoice = "movie"
+            
+            if searchFieldText == "" {
+                getTrendingMovies()
+            } else {
+                searchMovieBy(title: searchFieldText)
+            }
+            
         } else if sender.selectedSegmentIndex == 1 {
             searchChoice = "tv"
+            
+            if searchFieldText == "" {
+                getTrendingTvShows()
+            } else {
+                searchTvShowBy(title: searchFieldText)
+            }
         }
         
         let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
@@ -68,6 +85,22 @@ class SearchMoviesVC: UIViewController {
         NetworkService.instance.searchFor(model: ResponseTV.self, searchChoice, title) { tvShowResponse in
             let tvShowsArr = tvShowResponse.results
             self.mediaContent = tvShowsArr.map({ Media(from: $0) })
+            self.searchMoviesTableView.reloadData()
+        }
+    }
+    
+    func getTrendingMovies() {
+        NetworkService.instance.getTrending(model: ResponseMovie.self, searchChoice) { movieResponse in
+            let moviesArr = movieResponse.results
+            self.mediaContent = moviesArr.map({ Media(from: $0) })
+            self.searchMoviesTableView.reloadData()
+        }
+    }
+    
+    func getTrendingTvShows() {
+        NetworkService.instance.getTrending(model: ResponseTV.self, searchChoice) { tvShowResponse in
+            let tvShowArr = tvShowResponse.results
+            self.mediaContent = tvShowArr.map({ Media(from: $0) })
             self.searchMoviesTableView.reloadData()
         }
     }

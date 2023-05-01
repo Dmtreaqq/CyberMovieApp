@@ -22,4 +22,15 @@ final class NetworkService {
             completion(moviesResponse!)
         }
     }
+    
+    func getTrending<T: Codable>(model: T.Type, _ searchType: String, completion: @escaping((T) -> ())) {
+        let baseUrl: String = "\(Config.API_MOVIEDB_HOST)/3/trending/\(searchType)/day"
+        let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)"
+        let url: String = baseUrl + urlParams
+        
+        AF.request(url).responseDecodable(of: T.self) { response in
+            let moviesResponse = response.value
+            completion(moviesResponse!)
+        }
+    }
 }
