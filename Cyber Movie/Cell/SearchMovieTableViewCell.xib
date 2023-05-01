@@ -20,7 +20,7 @@
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L5W-Aq-0lf">
                         <rect key="frame" x="16" y="8" width="145" height="240"/>
-                        <color key="backgroundColor" red="0.058823529409999999" green="0.1058823529" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.058823529409999999" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="240" id="WBt-8o-fge"/>
                             <constraint firstAttribute="width" constant="145" id="hek-ey-EGm"/>

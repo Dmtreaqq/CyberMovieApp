@@ -16,6 +16,9 @@ class SearchMoviesVC: UIViewController {
     var timer: Timer?
     var searchChoice = "movie"
     
+    let activityIndicator = UIActivityIndicatorView(style: .medium)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +33,10 @@ class SearchMoviesVC: UIViewController {
     }
     
     func setupUI() {
+        moviesSearchBar.addSubview(activityIndicator)
+        activityIndicator.frame = moviesSearchBar.bounds
+        activityIndicator.color = Color.buttonBG
+        
         view.backgroundColor = Color.mainBG
         
         searchMoviesTableView.backgroundColor = Color.mainBG
@@ -77,6 +84,9 @@ class SearchMoviesVC: UIViewController {
         NetworkService.instance.searchFor(model: ResponseMovie.self, searchChoice, title) { movieResponse in
             let moviesArr = movieResponse.results
             self.mediaContent = moviesArr.map({ Media(from: $0) })
+            
+            self.activityIndicator.removeFromSuperview()
+            
             self.searchMoviesTableView.reloadData()
         }
     }
@@ -85,6 +95,9 @@ class SearchMoviesVC: UIViewController {
         NetworkService.instance.searchFor(model: ResponseTV.self, searchChoice, title) { tvShowResponse in
             let tvShowsArr = tvShowResponse.results
             self.mediaContent = tvShowsArr.map({ Media(from: $0) })
+            
+            self.activityIndicator.removeFromSuperview()
+            
             self.searchMoviesTableView.reloadData()
         }
     }
@@ -109,7 +122,12 @@ class SearchMoviesVC: UIViewController {
 extension SearchMoviesVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
-        self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
+        
+        self.activityIndicator.removeFromSuperview()
+        self.moviesSearchBar.addSubview(self.activityIndicator)
+        activityIndicator.startAnimating()
+        
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { timer in
             
             if self.searchChoice == "movie" {
                 self.searchMovieBy(title: searchText)
