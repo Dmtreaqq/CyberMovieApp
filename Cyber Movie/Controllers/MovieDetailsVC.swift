@@ -62,6 +62,8 @@ class MovieDetailsVC: UIViewController {
         if let mediaImageString {
             let posterPathString = Config.API_MOVIE_IMG_HOST + mediaImageString
             let posterPath: URL? = URL(string: posterPathString)
+            
+            self.mediaImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
             self.mediaImageView.sd_setImage(with: posterPath)
         }
     }

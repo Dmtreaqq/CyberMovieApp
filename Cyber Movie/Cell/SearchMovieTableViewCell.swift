@@ -34,6 +34,7 @@ class SearchMovieTableViewCell: UITableViewCell {
         backgroundColor = Color.mainBG
         
         movieImageView.layer.cornerRadius = 15
+        movieImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         
         selectionStyle = .none
         
