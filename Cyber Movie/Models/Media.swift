@@ -17,6 +17,7 @@ struct Media: Codable {
     var releaseDate: String
     var video: Bool
     var voteCount: Int
+    var mediaType: String
 
     init(from movie: Movie) {
         self.id = movie.id
@@ -27,6 +28,7 @@ struct Media: Codable {
         self.backdropPath = movie.backdropPath ?? ""
         self.voteCount = movie.voteCount
         self.video = movie.video
+        self.mediaType = "movie"
     }
 
     init(from tv: TvShow) {
@@ -38,6 +40,7 @@ struct Media: Codable {
         self.backdropPath = tv.backdropPath ?? ""
         self.voteCount = tv.voteCount
         self.video = false
+        self.mediaType = "tv"
     }
 }
 

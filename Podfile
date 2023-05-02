@@ -4,5 +4,6 @@ platform :ios, '16.0'
 
   pod 'Alamofire'
   pod 'SDWebImage'
+  pod "youtube-ios-player-helper"
 
 end

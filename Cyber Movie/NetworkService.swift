@@ -36,6 +36,21 @@ final class NetworkService {
         }
     }
     
+    func loadTrailers(for id: Int,
+                      type: String,
+                      completion: @escaping(([String])->())) {
+
+        let baseUrl = "\(Config.API_MOVIEDB_HOST)/3/\(type)/\(id)/videos"
+        let urlParams = "?api_key=\(Config.TMDB_API_KEY)&language=en-US"
+        let url = baseUrl + urlParams
+
+        AF.request(url).responseDecodable(of: VideoResponse.self) { dataResponce in
+            let videos: [VideoResult] = dataResponce.value?.results ?? []
+            let keys: [String] = videos.map { $0.key }
+            completion(keys)
+        }
+    }
+    
     private func encodeQueryParam(_ param: String) -> String? {
         return param.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
     }
