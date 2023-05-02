@@ -25,9 +25,11 @@ class SearchMoviesVC: UIViewController {
         searchMoviesTableView.dataSource = self
         searchMoviesTableView.delegate = self
         moviesSearchBar.delegate = self
-
+        
         setupUI()
         registerTableViewCell()
+        
+        NetworkService.instance.setFirstPage()
         
         getTrendingMovies()
     }
@@ -59,6 +61,7 @@ class SearchMoviesVC: UIViewController {
         
         if sender.selectedSegmentIndex == 0 {
             searchChoice = "movie"
+            NetworkService.instance.setFirstPage()
             
             if searchFieldText == "" {
                 getTrendingMovies()
@@ -68,6 +71,7 @@ class SearchMoviesVC: UIViewController {
             
         } else if sender.selectedSegmentIndex == 1 {
             searchChoice = "tv"
+            NetworkService.instance.setFirstPage()
             
             if searchFieldText == "" {
                 getTrendingTvShows()
@@ -83,10 +87,14 @@ class SearchMoviesVC: UIViewController {
     func searchMovieBy(title: String) {
         NetworkService.instance.searchFor(model: ResponseMovie.self, searchChoice, title) { movieResponse in
             let moviesArr = movieResponse.results
-            self.mediaContent = moviesArr.map({ Media(from: $0) })
+            
+            if NetworkService.instance.page == 1 {
+                self.mediaContent = moviesArr.map({ Media(from: $0) })
+            } else {
+                self.mediaContent += moviesArr.map({ Media(from: $0) })
+            }
             
             self.activityIndicator.removeFromSuperview()
-            
             self.searchMoviesTableView.reloadData()
         }
     }
@@ -94,10 +102,14 @@ class SearchMoviesVC: UIViewController {
     func searchTvShowBy(title: String) {
         NetworkService.instance.searchFor(model: ResponseTV.self, searchChoice, title) { tvShowResponse in
             let tvShowsArr = tvShowResponse.results
-            self.mediaContent = tvShowsArr.map({ Media(from: $0) })
+            
+            if NetworkService.instance.page == 1 {
+                self.mediaContent = tvShowsArr.map({ Media(from: $0) })
+            } else {
+                self.mediaContent += tvShowsArr.map({ Media(from: $0) })
+            }
             
             self.activityIndicator.removeFromSuperview()
-            
             self.searchMoviesTableView.reloadData()
         }
     }
@@ -105,15 +117,27 @@ class SearchMoviesVC: UIViewController {
     func getTrendingMovies() {
         NetworkService.instance.getTrending(model: ResponseMovie.self, searchChoice) { movieResponse in
             let moviesArr = movieResponse.results
-            self.mediaContent = moviesArr.map({ Media(from: $0) })
+            
+            if NetworkService.instance.page == 1 {
+                self.mediaContent = moviesArr.map({ Media(from: $0) })
+            } else {
+                self.mediaContent += moviesArr.map({ Media(from: $0) })
+            }
+            
             self.searchMoviesTableView.reloadData()
         }
     }
     
     func getTrendingTvShows() {
         NetworkService.instance.getTrending(model: ResponseTV.self, searchChoice) { tvShowResponse in
-            let tvShowArr = tvShowResponse.results
-            self.mediaContent = tvShowArr.map({ Media(from: $0) })
+            let tvShowsArr = tvShowResponse.results
+            
+            if NetworkService.instance.page == 1 {
+                self.mediaContent = tvShowsArr.map({ Media(from: $0) })
+            } else {
+                self.mediaContent += tvShowsArr.map({ Media(from: $0) })
+            }
+            
             self.searchMoviesTableView.reloadData()
         }
     }
@@ -122,6 +146,7 @@ class SearchMoviesVC: UIViewController {
 extension SearchMoviesVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
+        NetworkService.instance.setFirstPage()
         
         self.activityIndicator.removeFromSuperview()
         self.moviesSearchBar.addSubview(self.activityIndicator)
@@ -160,12 +185,38 @@ extension SearchMoviesVC: UITableViewDataSource {
 
 extension SearchMoviesVC: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Hide keyboard from searchbar when scrolling
+        
         if moviesSearchBar.isFirstResponder {
             moviesSearchBar.resignFirstResponder()
         }
         
         if moviesSearchBar.searchTextField.isFirstResponder {
             moviesSearchBar.searchTextField.resignFirstResponder()
+        }
+        
+        // Fetch next page when at bottom of tableView
+        
+        let offset = scrollView.contentOffset.y
+        let height = scrollView.frame.size.height
+        let contentHeight = scrollView.contentSize.height
+        let distanceToBottom = contentHeight - offset - height
+        
+        var isLoadNeeded = true
+        
+        if distanceToBottom < 50 && isLoadNeeded {
+            isLoadNeeded = false
+            
+            NetworkService.instance.goToNextPage()
+            if searchChoice == "movie" {
+                getTrendingMovies()
+            } else if searchChoice == "tv" {
+                getTrendingTvShows()
+            }
+            
+            searchMoviesTableView.reloadData()
+            
+            isLoadNeeded = true
         }
     }
     
@@ -187,4 +238,3 @@ extension SearchMoviesVC: UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-

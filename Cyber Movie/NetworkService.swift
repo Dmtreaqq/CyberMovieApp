@@ -12,11 +12,21 @@ final class NetworkService {
     static let instance = NetworkService()
     private init() {}
     
+    var page = 1
+    
+    func setFirstPage() {
+        NetworkService.instance.page = 1
+    }
+    
+    func goToNextPage() {
+        NetworkService.instance.page += 1
+    }
+    
     func searchFor<T: Codable>(model: T.Type, _ searchType: String, _ query: String,  completion: @escaping((T) -> ())) {
         let encodedQuery = encodeQueryParam(query) ?? ""
         
         let baseUrl: String = "\(Config.API_MOVIEDB_HOST)/3/search/\(searchType)"
-        let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)&query=\(encodedQuery)"
+        let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)&query=\(encodedQuery)&page=\(self.page)"
         let url: String = baseUrl + urlParams
         
         AF.request(url).responseDecodable(of: T.self) { response in
@@ -27,7 +37,7 @@ final class NetworkService {
     
     func getTrending<T: Codable>(model: T.Type, _ searchType: String, completion: @escaping((T) -> ())) {
         let baseUrl: String = "\(Config.API_MOVIEDB_HOST)/3/trending/\(searchType)/day"
-        let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)"
+        let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)&page=\(self.page)"
         let url: String = baseUrl + urlParams
         
         AF.request(url).responseDecodable(of: T.self) { response in
