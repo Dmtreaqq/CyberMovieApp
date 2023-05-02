@@ -152,7 +152,7 @@ extension SearchMoviesVC: UITableViewDataSource {
         }
         
         let movie = mediaContent[indexPath.row]
-        cell.configure(title: movie.name , release: String(movie.popularity) , poster: movie.posterPath, rating: String(movie.popularity), votes: String(movie.popularity))
+        cell.configure(title: movie.name , release: movie.releaseDate, poster: movie.posterPath, rating: String(movie.popularity), votes: String(movie.voteCount))
         
         return cell
     }

@@ -14,10 +14,9 @@ class MovieDetailsVC: UIViewController {
     @IBOutlet weak var releaseYearLabel: UILabel!
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var addFavoriteButton: UIButton!
-    @IBOutlet weak var votesCountLabel: UILabel!
     @IBOutlet weak var addLikeButton: UIButton!
+    @IBOutlet weak var scoreButton: UIButton!
     @IBOutlet weak var ytPlayer: YTPlayerView!
-    @IBOutlet weak var favoriteTextLabel: UILabel!
     
     var mediaTitle: String?
     var mediaImageString: String?
@@ -58,22 +57,23 @@ class MovieDetailsVC: UIViewController {
     private func setupUI() {
         view.backgroundColor = Color.mainBG
         
-        favoriteTextLabel.textColor = .white
-        
         mediaImageView.layer.cornerRadius = 15
-        
-        votesCountLabel.text = String(votesCount ?? 0)
-        votesCountLabel.textColor = .white
         
         releaseYearLabel.text = "Genres | \(releaseYear ?? "")"
         releaseYearLabel.textColor = .white
         releaseYearLabel.textAlignment = .center
         
-        titleLabel.tintColor = .white
         titleLabel.textColor = .white
         titleLabel.text = mediaTitle
         
         addFavoriteButton.layer.cornerRadius = 15
+        addFavoriteButton.clipsToBounds = true
+        
+        addLikeButton.layer.cornerRadius = 15
+        addLikeButton.clipsToBounds = true
+        
+        scoreButton.layer.cornerRadius = 15
+        scoreButton.clipsToBounds = true
         
         navigationItem.title = mediaTitle
         
