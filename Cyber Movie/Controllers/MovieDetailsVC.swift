@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import youtube_ios_player_helper
 
 class MovieDetailsVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,17 +16,34 @@ class MovieDetailsVC: UIViewController {
     @IBOutlet weak var addFavoriteButton: UIButton!
     @IBOutlet weak var votesCountLabel: UILabel!
     @IBOutlet weak var addLikeButton: UIButton!
+    @IBOutlet weak var ytPlayer: YTPlayerView!
     @IBOutlet weak var favoriteTextLabel: UILabel!
     
     var mediaTitle: String?
     var mediaImageString: String?
     var releaseYear: String?
     var votesCount: Int?
+    var id: Int?
+    var mediaType: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        
+        loadTrailer()
+    }
+    
+    private func loadTrailer() {
+
+        guard let id else { return }
+        guard let mediaType else { return }
+
+        NetworkService.instance.loadTrailers(for: id, type: mediaType) { [weak self] listOfKeys in
+            guard let self else { return }
+            guard let key = listOfKeys.first else { return }
+            self.ytPlayer.load(withVideoId: key)
+        }
     }
     
     
@@ -37,7 +55,7 @@ class MovieDetailsVC: UIViewController {
         print("Like button pressed")
     }
     
-    func setupUI() {
+    private func setupUI() {
         view.backgroundColor = Color.mainBG
         
         favoriteTextLabel.textColor = .white

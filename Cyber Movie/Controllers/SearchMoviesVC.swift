@@ -181,6 +181,8 @@ extension SearchMoviesVC: UITableViewDelegate {
         vc.mediaImageString = media.backdropPath
         vc.releaseYear = media.releaseDate
         vc.votesCount = media.voteCount
+        vc.mediaType = media.mediaType
+        vc.id = media.id
         
         navigationController?.pushViewController(vc, animated: true)
     }
