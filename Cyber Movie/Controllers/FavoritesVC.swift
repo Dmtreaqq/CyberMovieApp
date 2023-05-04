@@ -40,7 +40,6 @@ class FavoritesVC: UIViewController {
 
 extension FavoritesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(movies.count)
         return movies.count
     }
     
@@ -50,7 +49,6 @@ extension FavoritesVC: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        print("here")
         cell.configure(media: movies[indexPath.row])
         
         return cell

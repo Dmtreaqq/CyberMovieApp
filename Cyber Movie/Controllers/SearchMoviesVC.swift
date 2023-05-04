@@ -239,12 +239,7 @@ extension SearchMoviesVC: UITableViewDelegate {
         
         let media = mediaContent[indexPath.row]
         
-        vc.mediaTitle = media.name
-        vc.mediaImageString = media.backdropPath
-        vc.releaseYear = media.releaseDate
-        vc.votesCount = media.voteCount
-        vc.mediaType = media.mediaType
-        vc.id = media.id
+        vc.media = media
         
         navigationController?.pushViewController(vc, animated: true)
     }
