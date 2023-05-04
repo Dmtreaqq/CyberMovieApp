@@ -47,6 +47,7 @@ class MovieDetailsVC: UIViewController {
     
     
     @IBAction func favoriteButtonPressed(_ sender: Any) {
+        RealmManager.instance.addMovie(movie: Media(from: Movie(adult: false, backdropPath: "/gDvxT2z6TNxervG97WfpePRZ3aR.jpg", id: 1, title: "Scary Movie", originalLanguage: "rus", originalTitle: "Scary Movie", overview: "sasa", posterPath: "/6iysgZr6Upm5RlAlVFo5f4D9euu.jpg", genreIDS: [1], popularity: 2.2, releaseDate: "2022-2-2", video: false, voteAverage: 2121, voteCount: 2121)))
         print("Added to favorites")
     }
     
