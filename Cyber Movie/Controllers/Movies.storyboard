@@ -35,25 +35,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorites" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYE-qD-l4j">
-                                <rect key="frame" x="144" y="409.66666666666669" width="105" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F2F-S2-c9O">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W5S-KK-9gI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PYE-qD-l4j" firstAttribute="centerX" secondItem="dQI-UP-P8V" secondAttribute="centerX" id="SmL-Rb-SWD"/>
-                            <constraint firstItem="PYE-qD-l4j" firstAttribute="centerY" secondItem="dQI-UP-P8V" secondAttribute="centerY" id="eXC-WX-3wl"/>
+                            <constraint firstItem="F2F-S2-c9O" firstAttribute="leading" secondItem="W5S-KK-9gI" secondAttribute="leading" id="aZx-1D-QXr"/>
+                            <constraint firstItem="F2F-S2-c9O" firstAttribute="bottom" secondItem="W5S-KK-9gI" secondAttribute="bottom" id="bAr-ZK-tHh"/>
+                            <constraint firstItem="F2F-S2-c9O" firstAttribute="top" secondItem="W5S-KK-9gI" secondAttribute="top" id="gwG-Py-4gW"/>
+                            <constraint firstItem="F2F-S2-c9O" firstAttribute="trailing" secondItem="W5S-KK-9gI" secondAttribute="trailing" id="kcR-cO-Jxf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="R1d-oQ-jaV"/>
+                    <connections>
+                        <outlet property="favoritesTableView" destination="F2F-S2-c9O" id="el7-Zx-b9p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWC-qT-KAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1011" y="-849"/>
+            <point key="canvasLocation" x="-1011.4503816793892" y="-849.29577464788736"/>
         </scene>
         <!--Movies-->
         <scene sceneID="s0d-6b-0kx">
