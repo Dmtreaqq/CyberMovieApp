@@ -15,17 +15,25 @@ class FavoritesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        movies = RealmManager.instance.getMovies()
+        print("viewdidload")
+        movies = RealmManager.instance.getMedia()
 
         view.backgroundColor = Color.mainBG
         setupUI()
         registerTableViewCell()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        movies = RealmManager.instance.getMedia()
+        favoritesTableView.reloadData()
+    }
+    
     
     func setupUI() {
         favoritesTableView.dataSource = self
+        favoritesTableView.delegate = self
         favoritesTableView.backgroundColor = Color.mainBG
 
         view.backgroundColor = Color.mainBG
@@ -52,6 +60,20 @@ extension FavoritesVC: UITableViewDataSource {
         cell.configure(media: movies[indexPath.row])
         
         return cell
+    }
+}
+
+extension FavoritesVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
+            let media = self.movies[indexPath.row]
+            RealmManager.instance.deleteMediaAt(media.id)
+            
+            self.movies = RealmManager.instance.getMedia()
+            self.favoritesTableView.reloadData()
+        }
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
