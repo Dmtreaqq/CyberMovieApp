@@ -16,7 +16,7 @@ class FavoritesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewdidload")
-        movies = RealmManager.instance.getMovies()
+        movies = RealmManager.instance.getMedia()
 
         view.backgroundColor = Color.mainBG
         setupUI()
@@ -26,7 +26,7 @@ class FavoritesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        movies = RealmManager.instance.getMovies()
+        movies = RealmManager.instance.getMedia()
         favoritesTableView.reloadData()
     }
     

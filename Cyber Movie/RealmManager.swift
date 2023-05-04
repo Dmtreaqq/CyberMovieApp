@@ -10,14 +10,22 @@ import Foundation
 class RealmManager {
     static let instance = RealmManager()
     
-    private var movies: [Media] = []
+    private var mediaArray: [Media] = []
     
-    func getMovies() -> [Media] {
-        movies
+    func getMedia() -> [Media] {
+        mediaArray
     }
     
-    func addMovie(movie: Media) {
-        movies.append(movie)
+    func addMedia(_ media: Media) {
+        mediaArray.append(media)
+    }
+    
+    func deleteMedia(_ mediaId: Int) {
+        let removeIndex = mediaArray.firstIndex { media in
+            media.id == mediaId
+        }
+        
+        mediaArray.remove(at: removeIndex!)
     }
     
     private init() {}
