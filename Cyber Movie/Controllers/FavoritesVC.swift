@@ -15,12 +15,19 @@ class FavoritesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("viewdidload")
         movies = RealmManager.instance.getMovies()
 
         view.backgroundColor = Color.mainBG
         setupUI()
         registerTableViewCell()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        movies = RealmManager.instance.getMovies()
+        favoritesTableView.reloadData()
     }
     
     
