@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="F2F-S2-c9O">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ava-cs-kRW">
                                 <rect key="frame" x="0.0" y="59" width="393" height="710"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -43,15 +43,18 @@
                         <viewLayoutGuide key="safeArea" id="W5S-KK-9gI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="F2F-S2-c9O" firstAttribute="leading" secondItem="W5S-KK-9gI" secondAttribute="leading" id="aZx-1D-QXr"/>
-                            <constraint firstItem="F2F-S2-c9O" firstAttribute="bottom" secondItem="W5S-KK-9gI" secondAttribute="bottom" id="bAr-ZK-tHh"/>
-                            <constraint firstItem="F2F-S2-c9O" firstAttribute="top" secondItem="W5S-KK-9gI" secondAttribute="top" id="gwG-Py-4gW"/>
-                            <constraint firstItem="F2F-S2-c9O" firstAttribute="trailing" secondItem="W5S-KK-9gI" secondAttribute="trailing" id="kcR-cO-Jxf"/>
+                            <constraint firstItem="Ava-cs-kRW" firstAttribute="top" secondItem="W5S-KK-9gI" secondAttribute="top" id="CF4-ap-yCP"/>
+                            <constraint firstItem="Ava-cs-kRW" firstAttribute="leading" secondItem="W5S-KK-9gI" secondAttribute="leading" id="HmA-dt-Jr9"/>
+                            <constraint firstItem="W5S-KK-9gI" firstAttribute="bottom" secondItem="Ava-cs-kRW" secondAttribute="bottom" id="WFJ-IU-4zq"/>
+                            <constraint firstItem="Ava-cs-kRW" firstAttribute="trailing" secondItem="W5S-KK-9gI" secondAttribute="trailing" id="XnW-PI-IOU"/>
+                            <constraint firstItem="Ava-cs-kRW" firstAttribute="leading" secondItem="W5S-KK-9gI" secondAttribute="leading" id="cVK-dN-aye"/>
+                            <constraint firstItem="Ava-cs-kRW" firstAttribute="bottom" secondItem="W5S-KK-9gI" secondAttribute="bottom" id="fpi-MG-EVd"/>
+                            <constraint firstItem="Ava-cs-kRW" firstAttribute="trailing" secondItem="W5S-KK-9gI" secondAttribute="trailing" id="oB7-zr-UqN"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="R1d-oQ-jaV"/>
                     <connections>
-                        <outlet property="favoritesTableView" destination="F2F-S2-c9O" id="el7-Zx-b9p"/>
+                        <outlet property="favoritesTableView" destination="Ava-cs-kRW" id="v6J-98-AZd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LWC-qT-KAc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
