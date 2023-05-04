@@ -27,7 +27,7 @@ class CustomTabBarController: UITabBarController {
     func setupUI() {
         tabBar.backgroundColor = Color.mainBGtab
         tabBar.tintColor = Color.buttonBG
-        tabBar.barTintColor = Color.buttonBG
+        tabBar.barTintColor = Color.mainBGtab
     }
     
     @objc func logout() {
