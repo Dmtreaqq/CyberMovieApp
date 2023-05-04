@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum MediaType: String  {
+    case movie
+    case tv
+}
+
 class SearchMoviesVC: UIViewController {
     @IBOutlet weak var moviesSearchBar: UISearchBar!
     @IBOutlet weak var searchMoviesTableView: UITableView!
@@ -15,6 +20,8 @@ class SearchMoviesVC: UIViewController {
     var mediaContent: [Media] = []
     var timer: Timer?
     var searchChoice = "movie"
+    
+    //    var searchChoice:MediaType = .movie
     
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     
@@ -52,8 +59,9 @@ class SearchMoviesVC: UIViewController {
     }
     
     func registerTableViewCell() {
-        let nib = UINib(nibName: "SearchMovieTableViewCell", bundle: nil)
-        searchMoviesTableView.register(nib, forCellReuseIdentifier: "SearchMovieTableViewCell")
+        let nibName = String(describing: SearchMovieTableViewCell.self)
+        let nib = UINib(nibName: nibName, bundle: nil)
+        searchMoviesTableView.register(nib, forCellReuseIdentifier: nibName)
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
@@ -175,6 +183,7 @@ extension SearchMoviesVC: UITableViewDataSource {
                 SearchMovieTableViewCell else {
             return UITableViewCell()
         }
+        // Extension for UITableView dequeueReusableCell
         
         let movie = mediaContent[indexPath.row]
         cell.configure(title: movie.name , release: movie.releaseDate, poster: movie.posterPath, rating: String(movie.popularity), votes: String(movie.voteCount))
@@ -187,9 +196,10 @@ extension SearchMoviesVC: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Hide keyboard from searchbar when scrolling
         
-        if moviesSearchBar.isFirstResponder {
-            moviesSearchBar.resignFirstResponder()
-        }
+        moviesSearchBar.endEditing(true)
+//        if moviesSearchBar.isFirstResponder {
+//            moviesSearchBar.resignFirstResponder()
+//        }
         
         if moviesSearchBar.searchTextField.isFirstResponder {
             moviesSearchBar.searchTextField.resignFirstResponder()
@@ -201,10 +211,11 @@ extension SearchMoviesVC: UITableViewDelegate {
         let height = scrollView.frame.size.height
         let contentHeight = scrollView.contentSize.height
         let distanceToBottom = contentHeight - offset - height
+        let distanseForLoadingNewPage: CGFloat = 50
         
         var isLoadNeeded = true
         
-        if distanceToBottom < 50 && isLoadNeeded {
+        if distanceToBottom < distanseForLoadingNewPage && isLoadNeeded {
             isLoadNeeded = false
             
             NetworkService.instance.goToNextPage()

@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 
 class SearchMovieTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var releaseYearLabel: UILabel!
