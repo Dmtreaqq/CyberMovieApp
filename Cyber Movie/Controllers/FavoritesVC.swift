@@ -75,5 +75,18 @@ extension FavoritesVC: UITableViewDelegate {
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "MovieDetails", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "MovieDetailsVC") as? MovieDetailsVC else {
+            return
+        }
+        
+        let media = movies[indexPath.row]
+        
+        vc.media = media
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
