@@ -42,5 +42,17 @@ struct Media: Codable {
         self.video = false
         self.mediaType = "tv"
     }
+    
+    init(from realmMedia: RealmMedia) {
+        self.id = realmMedia.id
+        self.name = realmMedia.name
+        self.popularity = realmMedia.popularity
+        self.releaseDate = realmMedia.releaseDate
+        self.posterPath = realmMedia.posterPath
+        self.backdropPath = realmMedia.backdropPath
+        self.voteCount = realmMedia.voteCount
+        self.video = realmMedia.video
+        self.mediaType = realmMedia.mediaType
+    }
 }
 
