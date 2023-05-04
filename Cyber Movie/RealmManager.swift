@@ -20,7 +20,7 @@ class RealmManager {
         mediaArray.append(media)
     }
     
-    func deleteMedia(_ mediaId: Int) {
+    func deleteMediaAt(_ mediaId: Int) {
         let removeIndex = mediaArray.firstIndex { media in
             media.id == mediaId
         }
