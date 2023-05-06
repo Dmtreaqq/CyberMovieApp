@@ -10,12 +10,10 @@ import UIKit
 class FavoritesVC: UIViewController {
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    
     var movies: [Media] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        movies = RealmManager.instance.getMedia()
         movies = RealmManager.instance.getRealmMedia()
 
         view.backgroundColor = Color.mainBG
@@ -26,7 +24,6 @@ class FavoritesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        movies = RealmManager.instance.getMedia()
         movies = RealmManager.instance.getRealmMedia()
         favoritesTableView.reloadData()
     }
@@ -38,7 +35,6 @@ class FavoritesVC: UIViewController {
         favoritesTableView.backgroundColor = Color.mainBG
 
         view.backgroundColor = Color.mainBG
-
     }
     
     func registerTableViewCell() {
@@ -68,12 +64,13 @@ extension FavoritesVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             let media = self.movies[indexPath.row]
-//            RealmManager.instance.deleteMediaAt(media.id)
-            RealmManager.instance.removeMedia(media.id)
             
-//            self.movies = RealmManager.instance.getMedia()
-            self.movies = RealmManager.instance.getRealmMedia()
-            self.favoritesTableView.reloadData()
+            RealmManager.instance.removeMedia(media.id)
+            self.movies.remove(at: indexPath.row)
+
+            self.favoritesTableView.beginUpdates()
+            self.favoritesTableView.deleteRows(at: [indexPath], with: .middle)
+            self.favoritesTableView.endUpdates()
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -86,7 +83,6 @@ extension FavoritesVC: UITableViewDelegate {
         }
         
         let media = movies[indexPath.row]
-        
         vc.media = media
         
         navigationController?.pushViewController(vc, animated: true)
