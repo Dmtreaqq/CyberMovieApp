@@ -171,6 +171,16 @@ class SearchMoviesVC: UIViewController {
 
 extension SearchMoviesVC: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        search(in: searchBar, for: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchText = searchBar.searchTextField.text ?? ""
+        
+        search(in: searchBar , for: searchText)
+    }
+    
+    func search(in searchBar: UISearchBar, for searchText: String) {
         timer?.invalidate()
         NetworkService.instance.setFirstPage()
         
