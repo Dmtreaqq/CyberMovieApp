@@ -21,6 +21,8 @@ class SearchMoviesVC: UIViewController {
     var timer: Timer?
     var searchChoice = "movie"
     
+    let checkConnection = NetworkService.instance.checkInternetConnection
+    
     //    var searchChoice:MediaType = .movie
     
     let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -93,6 +95,10 @@ class SearchMoviesVC: UIViewController {
     }
     
     func searchMovieBy(title: String) {
+        if !checkConnection() {
+            return
+        }
+        
         NetworkService.instance.searchFor(model: ResponseMovie.self, searchChoice, title) { movieResponse in
             let moviesArr = movieResponse.results
             
@@ -108,6 +114,10 @@ class SearchMoviesVC: UIViewController {
     }
     
     func searchTvShowBy(title: String) {
+        if !checkConnection() {
+            return
+        }
+        
         NetworkService.instance.searchFor(model: ResponseTV.self, searchChoice, title) { tvShowResponse in
             let tvShowsArr = tvShowResponse.results
             
@@ -123,6 +133,10 @@ class SearchMoviesVC: UIViewController {
     }
     
     func getTrendingMovies() {
+        if !checkConnection() {
+            return
+        }
+        
         NetworkService.instance.getTrending(model: ResponseMovie.self, searchChoice) { movieResponse in
             let moviesArr = movieResponse.results
             
@@ -137,6 +151,10 @@ class SearchMoviesVC: UIViewController {
     }
     
     func getTrendingTvShows() {
+        if !checkConnection() {
+            return
+        }
+        
         NetworkService.instance.getTrending(model: ResponseTV.self, searchChoice) { tvShowResponse in
             let tvShowsArr = tvShowResponse.results
             
@@ -168,6 +186,7 @@ extension SearchMoviesVC: UISearchBarDelegate {
                 self.searchTvShowBy(title: searchText)
             }
             
+            self.activityIndicator.stopAnimating()
             searchBar.endEditing(true)
         }
     }

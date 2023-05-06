@@ -14,6 +14,10 @@ final class NetworkService {
     
     var page = 1
     
+    func checkInternetConnection() -> Bool {
+        NetworkReachabilityManager()?.isReachable ?? false
+    }
+    
     func setFirstPage() {
         NetworkService.instance.page = 1
     }
