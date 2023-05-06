@@ -226,13 +226,6 @@ extension SearchMoviesVC: UITableViewDelegate {
         // Hide keyboard from searchbar when scrolling
         
         moviesSearchBar.endEditing(true)
-//        if moviesSearchBar.isFirstResponder {
-//            moviesSearchBar.resignFirstResponder()
-//        }
-        
-        if moviesSearchBar.searchTextField.isFirstResponder {
-            moviesSearchBar.searchTextField.resignFirstResponder()
-        }
         
         // Fetch next page when at bottom of tableView
         
