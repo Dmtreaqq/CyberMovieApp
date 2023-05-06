@@ -10,7 +10,6 @@ import UIKit
 class FavoritesVC: UIViewController {
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    
     var movies: [Media] = []
     
     override func viewDidLoad() {
@@ -36,7 +35,6 @@ class FavoritesVC: UIViewController {
         favoritesTableView.backgroundColor = Color.mainBG
 
         view.backgroundColor = Color.mainBG
-
     }
     
     func registerTableViewCell() {
@@ -73,9 +71,6 @@ extension FavoritesVC: UITableViewDelegate {
             self.favoritesTableView.beginUpdates()
             self.favoritesTableView.deleteRows(at: [indexPath], with: .middle)
             self.favoritesTableView.endUpdates()
-            
-//            self.movies = RealmManager.instance.getRealmMedia()
-//            self.favoritesTableView.reloadData()
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
@@ -88,7 +83,6 @@ extension FavoritesVC: UITableViewDelegate {
         }
         
         let media = movies[indexPath.row]
-        
         vc.media = media
         
         navigationController?.pushViewController(vc, animated: true)
