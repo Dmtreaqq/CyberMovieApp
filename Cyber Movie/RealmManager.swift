@@ -9,27 +9,10 @@ import Foundation
 import RealmSwift
 
 class RealmManager {
-    private let realm = try! Realm()
-    
+    private init() {}
     static let instance = RealmManager()
     
-    private var mediaArray: [Media] = []
-    
-    func getMedia() -> [Media] {
-        mediaArray
-    }
-    
-    func addMedia(_ media: Media) {
-        mediaArray.append(media)
-    }
-    
-    func deleteMediaAt(_ mediaId: Int) {
-        let removeIndex = mediaArray.firstIndex { media in
-            media.id == mediaId
-        }
-        
-        mediaArray.remove(at: removeIndex!)
-    }
+    private let realm = try! Realm()
     
     func getRealmMedia() -> [Media] {
         let realmResults = Array(realm.objects(RealmMedia.self))
@@ -80,6 +63,4 @@ class RealmManager {
     func convertRealmToMedia(realmMedia: RealmMedia) -> Media {
         return Media(from: realmMedia)
     }
- 
-    private init() {}
 }
