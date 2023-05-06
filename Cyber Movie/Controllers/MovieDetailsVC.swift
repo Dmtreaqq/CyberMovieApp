@@ -24,8 +24,8 @@ class MovieDetailsVC: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        
-//        loadTrailer()
+
+        loadTrailer()
     }
     
     private func loadTrailer() {
@@ -44,7 +44,6 @@ class MovieDetailsVC: UIViewController {
     @IBAction func favoriteButtonPressed(_ sender: Any) {
         guard let media else { return }
         
-//        RealmManager.instance.addMedia(media)
         RealmManager.instance.addRealmMedia(media)
         print("Added to favorites")
     }
