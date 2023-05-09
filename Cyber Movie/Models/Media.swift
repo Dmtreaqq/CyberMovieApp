@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct Media: Codable {
 
@@ -18,6 +19,7 @@ struct Media: Codable {
     var video: Bool
     var voteCount: Int
     var mediaType: String
+    var genreIDS: [Int]
 
     init(from movie: Movie) {
         self.id = movie.id
@@ -28,7 +30,8 @@ struct Media: Codable {
         self.backdropPath = movie.backdropPath ?? ""
         self.voteCount = movie.voteCount
         self.video = movie.video
-        self.mediaType = "movie"
+        self.mediaType = MediaType.movie.rawValue
+        self.genreIDS = movie.genreIDS
     }
 
     init(from tv: TvShow) {
@@ -40,7 +43,8 @@ struct Media: Codable {
         self.backdropPath = tv.backdropPath ?? ""
         self.voteCount = tv.voteCount
         self.video = false
-        self.mediaType = "tv"
+        self.mediaType = MediaType.tv.rawValue
+        self.genreIDS = tv.genreIDS
     }
     
     init(from realmMedia: RealmMedia) {
@@ -53,6 +57,7 @@ struct Media: Codable {
         self.voteCount = realmMedia.voteCount
         self.video = realmMedia.video
         self.mediaType = realmMedia.mediaType
+        self.genreIDS = Array(realmMedia.genreIDS)
     }
 }
 

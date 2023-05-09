@@ -16,6 +16,7 @@ class MovieDetailsVC: UIViewController {
     @IBOutlet weak var addFavoriteButton: UIButton!
     @IBOutlet weak var addLikeButton: UIButton!
     @IBOutlet weak var scoreButton: UIButton!
+    @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var ytPlayer: YTPlayerView!
     
     var media: Media?
@@ -52,17 +53,36 @@ class MovieDetailsVC: UIViewController {
         print("Like button pressed")
     }
     
+    private func buildGenresString() -> String {
+        var result = ""
+        
+        guard let genres = media?.genreIDS else { return "" }
+        
+        for genreId in genres {
+            if let genre = Genres[genreId] {
+                result += genre + " | "
+            } else {
+                result += ""
+            }
+        }
+        
+        return result
+    }
+    
     private func setupUI() {
         view.backgroundColor = Color.mainBG
         
         mediaImageView.layer.cornerRadius = 15
         
-        releaseYearLabel.text = "Genres | \(media?.releaseDate ?? "")"
+        releaseYearLabel.text = convertDate(date: media?.releaseDate ?? "")
         releaseYearLabel.textColor = .white
         releaseYearLabel.textAlignment = .center
         
         titleLabel.textColor = .white
         titleLabel.text = media?.name
+        
+        genresLabel.textColor = .white
+        genresLabel.text = buildGenresString()
         
         addFavoriteButton.layer.cornerRadius = 15
         addFavoriteButton.clipsToBounds = true
@@ -75,12 +95,12 @@ class MovieDetailsVC: UIViewController {
         
         navigationItem.title = media?.name
         
-        if let mediaImageString = media?.posterPath {
-            let posterPathString = Config.API_MOVIE_IMG_HOST + mediaImageString
-            let posterPath: URL? = URL(string: posterPathString)
+        if let mediaImageString = media?.backdropPath {
+            let backdropPathString = Config.API_MOVIE_IMG_HOST + mediaImageString
+            let backdropPath: URL? = URL(string: backdropPathString)
             
             self.mediaImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            self.mediaImageView.sd_setImage(with: posterPath)
+            self.mediaImageView.sd_setImage(with: backdropPath)
         }
     }
 }

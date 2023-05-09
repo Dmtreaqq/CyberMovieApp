@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630707F02A0A309C005F402F /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630707EF2A0A309C005F402F /* Converter.swift */; };
 		6332231529FF99AF002E619F /* TvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332231429FF99AF002E619F /* TvShow.swift */; };
 		6332231729FF9B52002E619F /* ResponseTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332231629FF9B52002E619F /* ResponseTV.swift */; };
 		6332231929FF9D58002E619F /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332231829FF9D58002E619F /* Media.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		630707EF2A0A309C005F402F /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		6332231429FF99AF002E619F /* TvShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShow.swift; sourceTree = "<group>"; };
 		6332231629FF9B52002E619F /* ResponseTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTV.swift; sourceTree = "<group>"; };
 		6332231829FF9D58002E619F /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
@@ -107,7 +109,7 @@
 				63B1197C29FAE4A400DB6D50 /* Controllers */,
 				63B1197B29F9A32000DB6D50 /* Common */,
 				63B1197D29FAE5C600DB6D50 /* Models */,
-				63B1197E29FAE5F300DB6D50 /* Resources */,
+				63B1197E29FAE5F300DB6D50 /* Utils */,
 				63B1196B29F99E6800DB6D50 /* LoginVC.swift */,
 				63B1196D29F99E6800DB6D50 /* Main.storyboard */,
 				63B1198E29FBF44900DB6D50 /* Constants.swift */,
@@ -156,11 +158,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		63B1197E29FAE5F300DB6D50 /* Resources */ = {
+		63B1197E29FAE5F300DB6D50 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				630707EF2A0A309C005F402F /* Converter.swift */,
 			);
-			path = Resources;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		63B1199029FC03AB00DB6D50 /* Cell */ = {
@@ -324,6 +327,7 @@
 				6353CA8429FFB84A00782E9E /* MovieDetailsVC.swift in Sources */,
 				6332231529FF99AF002E619F /* TvShow.swift in Sources */,
 				63B1196829F99E6800DB6D50 /* AppDelegate.swift in Sources */,
+				630707F02A0A309C005F402F /* Converter.swift in Sources */,
 				63B1198F29FBF44900DB6D50 /* Constants.swift in Sources */,
 				63C77A4C29FD51B400628200 /* Movie.swift in Sources */,
 				635242CB2A03A93400BA8E41 /* FavoritesTableViewCell.swift in Sources */,

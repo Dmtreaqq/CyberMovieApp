@@ -56,6 +56,7 @@ class RealmManager {
         realmMedia.voteCount = media.voteCount
         realmMedia.video = media.video
         realmMedia.id = media.id
+        realmMedia.genreIDS.append(objectsIn: media.genreIDS)
         
         return realmMedia
     }
