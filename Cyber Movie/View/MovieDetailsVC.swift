@@ -46,11 +46,22 @@ class MovieDetailsVC: UIViewController {
         guard let media else { return }
         
         RealmService.instance.addRealmMedia(media)
-        print("Added to favorites")
+        
+        let alert = UIAlertController(title: media.name, message: "Media was added to favorites", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     @IBAction func likeButtonPressed(_ sender: Any) {
-        print("Like button pressed")
+        let alert = UIAlertController(title: media?.name, message: "Media was liked", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .default) { action in
+            print("Like button pressed")
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     private func buildGenresString() -> String {
