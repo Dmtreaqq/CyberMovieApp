@@ -61,13 +61,23 @@
                                     <constraint firstAttribute="trailing" secondItem="cA8-4P-cPD" secondAttribute="trailing" id="hrO-UV-i8z"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75R-KA-H0N">
+                                <rect key="frame" x="137.66666666666666" y="556.66666666666663" width="117.66666666666666" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Login TMDB"/>
+                                <connections>
+                                    <action selector="loginTmdbButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="31P-Gs-3Nc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Xsf-5d-G0q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BEl-f9-qZi"/>
                             <constraint firstItem="Xsf-5d-G0q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="JWL-jw-nYY"/>
+                            <constraint firstItem="75R-KA-H0N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NJQ-Ny-Arh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xsf-5d-G0q" secondAttribute="trailing" constant="20" id="OQh-Pg-0b1"/>
+                            <constraint firstItem="75R-KA-H0N" firstAttribute="top" secondItem="Xsf-5d-G0q" secondAttribute="bottom" constant="20" id="TJe-W2-iOJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uhz-kS-Qc2"/>
@@ -75,6 +85,7 @@
                         <outlet property="loginImageView" destination="cA8-4P-cPD" id="1ma-q5-42K"/>
                         <outlet property="loginScreenTitleLabel" destination="1ov-g1-QI0" id="cnc-Eb-WvR"/>
                         <outlet property="loginTextField" destination="p2W-sh-djI" id="mb3-Ht-oad"/>
+                        <outlet property="loginTmdbButton" destination="75R-KA-H0N" id="t4X-bZ-Bfi"/>
                         <outlet property="passwordTextField" destination="HWT-yL-9l4" id="13B-Q0-KJW"/>
                         <outlet property="signinButton" destination="3bd-qv-4GT" id="x4F-Yy-Nhb"/>
                     </connections>

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SafariServices
 
 class LoginVC: UIViewController {
     @IBOutlet weak var loginScreenTitleLabel: UILabel!
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var loginImageView: UIImageView!
+    @IBOutlet weak var loginTmdbButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
@@ -27,6 +29,15 @@ class LoginVC: UIViewController {
         let vc = sb.instantiateViewController(withIdentifier: "CustomTabBarController")
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    @IBAction func loginTmdbButtonPressed(_ sender: Any) {
+        let webSite = "https://dou.ua"
+        
+        guard let url = URL(string: webSite) else { return }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true, completion: nil)
     }
     
     func setupUI() {

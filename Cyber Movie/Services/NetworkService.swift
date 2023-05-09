@@ -50,6 +50,14 @@ final class NetworkService {
         }
     }
     
+    func generateRequestToken(completion: @escaping(() -> ())) {
+        let baseUrl: String = "\(Config.API_MOVIEDB_HOST)/3/authentication/token/new"
+        let urlParams: String = "?api_key=\(Config.TMDB_API_KEY)&page=\(self.page)"
+        let url: String = baseUrl + urlParams
+        
+        AF.request(url).responseD
+    }
+    
     func loadTrailers(for id: Int,
                       type: String,
                       completion: @escaping(([String])->())) {
