@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		630707F02A0A309C005F402F /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630707EF2A0A309C005F402F /* Converter.swift */; };
+		630707F52A0A8D0E005F402F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 630707F42A0A8D0E005F402F /* Extensions.swift */; };
 		6332231529FF99AF002E619F /* TvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332231429FF99AF002E619F /* TvShow.swift */; };
 		6332231929FF9D58002E619F /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6332231829FF9D58002E619F /* Media.swift */; };
 		635242CB2A03A93400BA8E41 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635242C92A03A93400BA8E41 /* FavoritesTableViewCell.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		630707EF2A0A309C005F402F /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		630707F42A0A8D0E005F402F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		6332231429FF99AF002E619F /* TvShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvShow.swift; sourceTree = "<group>"; };
 		6332231829FF9D58002E619F /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		635242C92A03A93400BA8E41 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				63B1198E29FBF44900DB6D50 /* Constants.swift */,
 				630707EF2A0A309C005F402F /* Converter.swift */,
+				630707F42A0A8D0E005F402F /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				638174A92A01299B00CC8DE4 /* VideoResponse.swift in Sources */,
 				6356F6932A03BD5D00BBCC58 /* RealmService.swift in Sources */,
 				6362685C2A03ED0000D3B25F /* RealmMedia.swift in Sources */,
+				630707F52A0A8D0E005F402F /* Extensions.swift in Sources */,
 				63B1199329FC03FA00DB6D50 /* SearchMovieTableViewCell.swift in Sources */,
 				63B1198D29FBF2DB00DB6D50 /* FavoritesVC.swift in Sources */,
 				6353CA8429FFB84A00782E9E /* MovieDetailsVC.swift in Sources */,
@@ -490,7 +494,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NW45U774Y9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cyber Movie/Common/Info.plist";
+				INFOPLIST_FILE = "Cyber Movie/Default/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -520,7 +524,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = NW45U774Y9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Cyber Movie/Common/Info.plist";
+				INFOPLIST_FILE = "Cyber Movie/Default/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

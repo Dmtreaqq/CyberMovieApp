@@ -215,11 +215,7 @@ extension SearchMoviesVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchMovieTableViewCell", for: indexPath) as?
-                SearchMovieTableViewCell else {
-            return UITableViewCell()
-        }
-        // Extension for UITableView dequeueReusableCell
+        let cell: SearchMovieTableViewCell = searchMoviesTableView.dequeue(cellForRowAt: indexPath)
         
         let movie = mediaContent[indexPath.row]
         cell.configure(title: movie.name , release: movie.releaseDate, poster: movie.posterPath, rating: String(movie.popularity), votes: String(movie.voteCount))

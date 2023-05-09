@@ -49,10 +49,7 @@ extension FavoritesVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = favoritesTableView.dequeueReusableCell(withIdentifier: "FavoritesTableViewCell") as? FavoritesTableViewCell else {
-            print("error")
-            return UITableViewCell()
-        }
+        let cell: FavoritesTableViewCell = favoritesTableView.dequeue(cellForRowAt: indexPath)
         
         cell.configure(media: movies[indexPath.row])
         
