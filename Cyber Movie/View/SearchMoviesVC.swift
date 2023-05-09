@@ -23,10 +23,7 @@ class SearchMoviesVC: UIViewController {
     
     let checkConnection = NetworkService.instance.checkInternetConnection
     
-    //    var searchChoice:MediaType = .movie
-    
     let activityIndicator = UIActivityIndicatorView(style: .medium)
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

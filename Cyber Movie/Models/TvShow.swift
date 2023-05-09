@@ -5,6 +5,18 @@
 //  Created by Дмитро Павлов on 01.05.2023.
 //
 
+struct ResponseTV: Codable {
+    var page: Int
+    var results: [TvShow]
+    var totalPages, totalResults: Int
+
+    enum CodingKeys: String, CodingKey {
+        case page, results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
 struct TvShow: Codable {
     var adult: Bool
     var backdropPath: String?

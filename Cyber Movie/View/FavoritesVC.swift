@@ -14,7 +14,7 @@ class FavoritesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        movies = RealmManager.instance.getRealmMedia()
+        movies = RealmService.instance.getRealmMedia()
 
         view.backgroundColor = Color.mainBG
         setupUI()
@@ -24,7 +24,7 @@ class FavoritesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        movies = RealmManager.instance.getRealmMedia()
+        movies = RealmService.instance.getRealmMedia()
         favoritesTableView.reloadData()
     }
     
@@ -65,7 +65,7 @@ extension FavoritesVC: UITableViewDelegate {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completionHandler) in
             let media = self.movies[indexPath.row]
             
-            RealmManager.instance.removeMedia(media.id)
+            RealmService.instance.removeMedia(media.id)
             self.movies.remove(at: indexPath.row)
 
             self.favoritesTableView.beginUpdates()

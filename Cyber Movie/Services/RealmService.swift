@@ -1,5 +1,5 @@
 //
-//  RealmManager.swift
+//  RealmService.swift
 //  Cyber Movie
 //
 //  Created by Дмитро Павлов on 04.05.2023.
@@ -8,9 +8,9 @@
 import Foundation
 import RealmSwift
 
-class RealmManager {
+class RealmService {
     private init() {}
-    static let instance = RealmManager()
+    static let instance = RealmService()
     
     private let realm = try! Realm()
     

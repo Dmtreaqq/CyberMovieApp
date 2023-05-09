@@ -45,7 +45,7 @@ class MovieDetailsVC: UIViewController {
     @IBAction func favoriteButtonPressed(_ sender: Any) {
         guard let media else { return }
         
-        RealmManager.instance.addRealmMedia(media)
+        RealmService.instance.addRealmMedia(media)
         print("Added to favorites")
     }
     
