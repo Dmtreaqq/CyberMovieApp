@@ -30,12 +30,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ReleaseYear" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yES-l9-IAe">
+                        <rect key="frame" x="115" y="61" width="92" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0x-lG-Aog">
+                        <rect key="frame" x="115" y="102" width="55" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="D0x-lG-Aog" firstAttribute="top" secondItem="yES-l9-IAe" secondAttribute="bottom" constant="20" id="2rC-7q-V6g"/>
+                    <constraint firstItem="D0x-lG-Aog" firstAttribute="leading" secondItem="ItC-g9-2QQ" secondAttribute="trailing" constant="20" id="5dt-6W-f6K"/>
                     <constraint firstItem="ItC-g9-2QQ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="6Og-U1-wBR"/>
                     <constraint firstItem="Vsw-8D-gHP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="DFz-Kc-Nee"/>
                     <constraint firstAttribute="bottom" secondItem="ItC-g9-2QQ" secondAttribute="bottom" constant="20" id="Ffi-CX-xEU"/>
+                    <constraint firstItem="yES-l9-IAe" firstAttribute="leading" secondItem="ItC-g9-2QQ" secondAttribute="trailing" constant="20" id="M3i-th-BVx"/>
                     <constraint firstItem="ItC-g9-2QQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="c1a-uF-uJ6"/>
+                    <constraint firstItem="yES-l9-IAe" firstAttribute="top" secondItem="Vsw-8D-gHP" secondAttribute="bottom" constant="20" id="iAG-5y-TgD"/>
                     <constraint firstItem="Vsw-8D-gHP" firstAttribute="leading" secondItem="ItC-g9-2QQ" secondAttribute="trailing" constant="20" id="ilY-Kv-tqY"/>
                     <constraint firstAttribute="trailing" secondItem="Vsw-8D-gHP" secondAttribute="trailing" constant="20" id="ltq-wp-kIA"/>
                 </constraints>
@@ -44,6 +60,8 @@
             <connections>
                 <outlet property="favoriteImageView" destination="ItC-g9-2QQ" id="hVO-OW-Gm6"/>
                 <outlet property="favoriteTitleLabel" destination="Vsw-8D-gHP" id="nDu-69-VZ1"/>
+                <outlet property="genresLabel" destination="D0x-lG-Aog" id="QPA-TU-9cB"/>
+                <outlet property="releaseYearLabel" destination="yES-l9-IAe" id="uGw-a9-ypI"/>
             </connections>
             <point key="canvasLocation" x="1.5267175572519083" y="20.422535211267608"/>
         </tableViewCell>

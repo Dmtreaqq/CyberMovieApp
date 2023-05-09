@@ -20,7 +20,7 @@ class SearchMovieTableViewCell: UITableViewCell {
         setupUI()
         
         movieTitleLabel.text = title
-        releaseYearLabel.text = release
+        releaseYearLabel.text = convertDate(date: release)
         movieRatingLabel.text = rating
         movieVotesRatingLabel.text = "Votes: \(votes)"
         

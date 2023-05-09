@@ -9,6 +9,8 @@ import UIKit
 
 class FavoritesTableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteTitleLabel: UILabel!
+    @IBOutlet weak var releaseYearLabel: UILabel!
+    @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var favoriteImageView: UIImageView!
     
     func configure(media: Media) {
@@ -16,6 +18,12 @@ class FavoritesTableViewCell: UITableViewCell {
     }
     
     func setupUI(media: Media) {
+        releaseYearLabel.text = convertDate(date: media.releaseDate)
+        releaseYearLabel.textColor = .white
+        
+        genresLabel.text = buildGenresString()
+        genresLabel.textColor = .white
+        
         favoriteTitleLabel.text = media.name
         favoriteTitleLabel.textColor = .white
         
@@ -26,6 +34,22 @@ class FavoritesTableViewCell: UITableViewCell {
             let posterPathString = Config.API_MOVIE_IMG_HOST + media.posterPath
             let posterPath: URL? = URL(string: posterPathString)
             favoriteImageView.sd_setImage(with: posterPath)
+        }
+        
+        func buildGenresString() -> String {
+            var result = ""
+            
+            let genres = media.genreIDS
+            
+            for genreId in genres {
+                if let genre = Genres[genreId] {
+                    result += genre + " | "
+                } else {
+                    result += ""
+                }
+            }
+            
+            return result
         }
     }
 }
