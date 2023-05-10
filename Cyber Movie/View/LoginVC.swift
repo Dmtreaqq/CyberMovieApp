@@ -22,6 +22,10 @@ class LoginVC: UIViewController {
         setupUI()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @IBAction func signinButtonPressed(_ sender: Any) {
         let sb = UIStoryboard(name: "Movies", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "CustomTabBarController")
