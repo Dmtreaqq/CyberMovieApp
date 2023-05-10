@@ -41,6 +41,8 @@ class LoginVC: UIViewController {
     }
     
     func setupUI() {
+        loginTextField.delegate = self
+        
         view.backgroundColor = Color.mainBG
         
         loginScreenTitleLabel.text = "Login to Your Account"
@@ -73,6 +75,12 @@ class LoginVC: UIViewController {
         }
         
         return false
+    }
+}
+
+extension LoginVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
 
