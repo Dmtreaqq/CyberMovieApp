@@ -16,8 +16,13 @@ class SearchMovieTableViewCell: UITableViewCell {
     @IBOutlet weak var movieRatingLabel: UILabel!
     @IBOutlet weak var movieVotesRatingLabel: UILabel!
     
-    func configure(title: String, release: String, poster: String?, rating: String, votes: String) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
         setupUI()
+    }
+    
+    func configure(title: String, release: String, poster: String?, rating: String, votes: String) {
         
         movieTitleLabel.text = title
         releaseYearLabel.text = convertDate(date: release)

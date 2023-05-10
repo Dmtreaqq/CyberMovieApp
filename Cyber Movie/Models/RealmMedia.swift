@@ -8,7 +8,7 @@
 import RealmSwift
 
 class RealmMedia: Object {
-    @Persisted var id: Int
+    @Persisted(primaryKey: true) var id: Int
     @Persisted var name: String
     @Persisted var popularity: Double
     @Persisted var posterPath: String

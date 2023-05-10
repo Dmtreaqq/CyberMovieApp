@@ -8,48 +8,51 @@
 import UIKit
 
 class FavoritesTableViewCell: UITableViewCell {
+    
     @IBOutlet weak var favoriteTitleLabel: UILabel!
     @IBOutlet weak var releaseYearLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var favoriteImageView: UIImageView!
     
-    func configure(media: Media) {
-        setupUI(media: media)
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupUI()
     }
     
-    func setupUI(media: Media) {
+    func configure(media: Media) {
+        
         releaseYearLabel.text = convertDate(date: media.releaseDate)
-        releaseYearLabel.textColor = .white
-        
-        genresLabel.text = buildGenresString()
-        genresLabel.textColor = .white
-        
+        genresLabel.text = buildGenresString(genreIDS: media.genreIDS)
         favoriteTitleLabel.text = media.name
-        favoriteTitleLabel.textColor = .white
-        
-        self.backgroundColor = Color.mainBGtab
-        self.selectionStyle = .none
         
         if media.posterPath != "" {
             let posterPathString = Config.API_MOVIE_IMG_HOST + media.posterPath
             let posterPath: URL? = URL(string: posterPathString)
             favoriteImageView.sd_setImage(with: posterPath)
         }
+    }
+    
+    func setupUI() {
         
-        func buildGenresString() -> String {
-            var result = ""
-            
-            let genres = media.genreIDS
-            
-            for genreId in genres {
-                if let genre = Genres[genreId] {
-                    result += genre + " | "
-                } else {
-                    result += ""
-                }
+        releaseYearLabel.textColor = .white
+        genresLabel.textColor = .white
+        favoriteTitleLabel.textColor = .white
+        
+        self.backgroundColor = Color.mainBGtab
+        self.selectionStyle = .none
+    }
+    
+    private func buildGenresString(genreIDS: [Int]) -> String {
+        var result = ""
+        
+        for genreId in genreIDS {
+            if let genre = Genres[genreId] {
+                result += genre + " | "
+            } else {
+                result += ""
             }
-            
-            return result
         }
+        
+        return result
     }
 }

@@ -28,7 +28,7 @@ class RealmService {
         let realmMedia = convertMediaToRealm(media: media)
         
         try! realm.write {
-            realm.add(realmMedia)
+            realm.add(realmMedia, update: .all)
         }
     }
     
