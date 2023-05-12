@@ -13,7 +13,7 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginVC" customModule="Cyber_Movie" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="LoginView" customModule="Cyber_Movie" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -51,7 +51,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                         <connections>
-                                            <action selector="signinButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="imj-GT-j2P"/>
+                                            <action selector="signinButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jlm-Rq-AjQ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -69,15 +69,15 @@
                             <constraint firstItem="Xsf-5d-G0q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="57" id="JWL-jw-nYY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xsf-5d-G0q" secondAttribute="trailing" constant="20" id="OQh-Pg-0b1"/>
                         </constraints>
+                        <connections>
+                            <outlet property="loginImageView" destination="cA8-4P-cPD" id="jTT-a0-UdO"/>
+                            <outlet property="loginScreenTitleLabel" destination="1ov-g1-QI0" id="iRj-ej-ex1"/>
+                            <outlet property="loginTextField" destination="p2W-sh-djI" id="aQx-lt-i4X"/>
+                            <outlet property="passwordTextField" destination="HWT-yL-9l4" id="kwf-W6-1KT"/>
+                            <outlet property="signinButton" destination="3bd-qv-4GT" id="AtJ-6m-vx8"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Uhz-kS-Qc2"/>
-                    <connections>
-                        <outlet property="loginImageView" destination="cA8-4P-cPD" id="1ma-q5-42K"/>
-                        <outlet property="loginScreenTitleLabel" destination="1ov-g1-QI0" id="cnc-Eb-WvR"/>
-                        <outlet property="loginTextField" destination="p2W-sh-djI" id="mb3-Ht-oad"/>
-                        <outlet property="passwordTextField" destination="HWT-yL-9l4" id="13B-Q0-KJW"/>
-                        <outlet property="signinButton" destination="3bd-qv-4GT" id="x4F-Yy-Nhb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
