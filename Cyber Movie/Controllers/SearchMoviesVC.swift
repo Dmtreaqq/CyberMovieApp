@@ -13,24 +13,24 @@ enum MediaType: String  {
 }
 
 class SearchMoviesVC: UIViewController {
-    @IBOutlet weak var moviesSearchBar: UISearchBar!
-    @IBOutlet weak var searchMoviesTableView: UITableView!
-    @IBOutlet weak var searchSegmentedControl: UISegmentedControl!
+    private var searchMoviesView: SearchMoviesView! {
+        guard isViewLoaded else { return nil }
+        return (view as! SearchMoviesView)
+    }
     
-    var mediaContent: [Media] = []
+    var mediaContent: [Media] = [] {
+        didSet {
+            reloadTableData()
+        }
+    }
+    
     var timer: Timer?
     var searchChoice = MediaType.movie
-    
     let checkConnection = NetworkService.instance.checkInternetConnection
-    
     let activityIndicator = UIActivityIndicatorView(style: .medium)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchMoviesTableView.dataSource = self
-        searchMoviesTableView.delegate = self
-        moviesSearchBar.delegate = self
         
         setupUI()
         registerTableViewCell()
@@ -40,31 +40,8 @@ class SearchMoviesVC: UIViewController {
         getTrendingMovies()
     }
     
-    func setupUI() {
-        moviesSearchBar.addSubview(activityIndicator)
-        activityIndicator.frame = moviesSearchBar.bounds
-        activityIndicator.color = Color.buttonBG
-        
-        view.backgroundColor = Color.mainBG
-        
-        searchMoviesTableView.backgroundColor = Color.mainBG
-        
-        moviesSearchBar.barTintColor = Color.mainBG
-        moviesSearchBar.searchTextField.textColor = .white
-        
-        searchSegmentedControl.selectedSegmentTintColor = Color.buttonBG
-        searchSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-        searchSegmentedControl.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
-    }
-    
-    func registerTableViewCell() {
-        let nibName = String(describing: SearchMovieTableViewCell.self)
-        let nib = UINib(nibName: nibName, bundle: nil)
-        searchMoviesTableView.register(nib, forCellReuseIdentifier: nibName)
-    }
-    
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        let searchFieldText = moviesSearchBar.searchTextField.text ?? ""
+        let searchFieldText = searchMoviesView.moviesSearchBar.searchTextField.text ?? ""
         
         if sender.selectedSegmentIndex == 0 {
             searchChoice = MediaType.movie
@@ -106,7 +83,6 @@ class SearchMoviesVC: UIViewController {
             }
             
             self.activityIndicator.removeFromSuperview()
-            self.searchMoviesTableView.reloadData()
         }
     }
     
@@ -125,7 +101,6 @@ class SearchMoviesVC: UIViewController {
             }
             
             self.activityIndicator.removeFromSuperview()
-            self.searchMoviesTableView.reloadData()
         }
     }
     
@@ -142,8 +117,6 @@ class SearchMoviesVC: UIViewController {
             } else {
                 self.mediaContent += moviesArr.map({ Media(from: $0) })
             }
-            
-            self.searchMoviesTableView.reloadData()
         }
     }
     
@@ -160,8 +133,6 @@ class SearchMoviesVC: UIViewController {
             } else {
                 self.mediaContent += tvShowsArr.map({ Media(from: $0) })
             }
-            
-            self.searchMoviesTableView.reloadData()
         }
     }
 }
@@ -176,13 +147,87 @@ extension SearchMoviesVC: UISearchBarDelegate {
         
         search(in: searchBar , for: searchText)
     }
+}
+
+extension SearchMoviesVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        mediaContent.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: SearchMovieTableViewCell = tableView.dequeue(cellForRowAt: indexPath)
+        
+        let movie = mediaContent[indexPath.row]
+        cell.configure(media: movie)
+        
+        return cell
+    }
+}
+
+extension SearchMoviesVC: UITableViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        endEditing()
+        
+        let goToNextPage = {
+            NetworkService.instance.goToNextPage()
+            
+            switch self.searchChoice {
+            case .movie:
+                self.getTrendingMovies()
+            case .tv:
+                self.getTrendingTvShows()
+            }
+        }
+        
+        scrollView.performActionWhenScrollAtBottom(action: goToNextPage)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sb = UIStoryboard(name: "MovieDetails", bundle: nil)
+        guard let vc = sb.instantiateViewController(withIdentifier: "MovieDetailsVC") as? MovieDetailsVC else {
+            return
+        }
+        
+        let media = mediaContent[indexPath.row]
+        vc.media = media
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+private extension SearchMoviesVC {
+    func setupUI() {
+        searchMoviesView.moviesSearchBar.addSubview(activityIndicator)
+        activityIndicator.frame = searchMoviesView.moviesSearchBar.bounds
+        activityIndicator.color = Color.buttonBG
+        
+        searchMoviesView.moviesSearchBar.delegate = self
+        searchMoviesView.searchMoviesTableView.dataSource = self
+        searchMoviesView.searchMoviesTableView.delegate = self
+        
+        searchMoviesView.setupUI()
+    }
+    
+    func reloadTableData() {
+        searchMoviesView.searchMoviesTableView.reloadData()
+    }
+    
+    func endEditing() {
+        searchMoviesView.moviesSearchBar.endEditing(true)
+    }
+    
+    func registerTableViewCell() {
+        let nibName = String(describing: SearchMovieTableViewCell.self)
+        let nib = UINib(nibName: nibName, bundle: nil)
+        searchMoviesView.searchMoviesTableView.register(nib, forCellReuseIdentifier: nibName)
+    }
     
     func search(in searchBar: UISearchBar, for searchText: String) {
         timer?.invalidate()
         NetworkService.instance.setFirstPage()
         
-        self.activityIndicator.removeFromSuperview()
-        self.moviesSearchBar.addSubview(self.activityIndicator)
+        activityIndicator.removeFromSuperview()
+        searchMoviesView.moviesSearchBar.addSubview(self.activityIndicator)
         activityIndicator.startAnimating()
         
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { timer in
@@ -209,65 +254,3 @@ extension SearchMoviesVC: UISearchBarDelegate {
     }
 }
 
-extension SearchMoviesVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        mediaContent.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: SearchMovieTableViewCell = searchMoviesTableView.dequeue(cellForRowAt: indexPath)
-        
-        let movie = mediaContent[indexPath.row]
-        cell.configure(title: movie.name , release: movie.releaseDate, poster: movie.posterPath, rating: String(movie.popularity), votes: String(movie.voteCount))
-        
-        return cell
-    }
-}
-
-extension SearchMoviesVC: UITableViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // Hide keyboard from searchbar when scrolling
-        
-        moviesSearchBar.endEditing(true)
-        
-        // Fetch next page when at bottom of tableView
-        
-        let offset = scrollView.contentOffset.y
-        let height = scrollView.frame.size.height
-        let contentHeight = scrollView.contentSize.height
-        let distanceToBottom = contentHeight - offset - height
-        let distanseForLoadingNewPage: CGFloat = 50
-        
-        var isLoadNeeded = true
-        
-        if distanceToBottom < distanseForLoadingNewPage && isLoadNeeded {
-            isLoadNeeded = false
-            
-            NetworkService.instance.goToNextPage()
-            
-            switch searchChoice {
-                case .movie:
-                    getTrendingMovies()
-                case .tv:
-                    getTrendingTvShows()
-            }
-            
-            searchMoviesTableView.reloadData()
-            
-            isLoadNeeded = true
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sb = UIStoryboard(name: "MovieDetails", bundle: nil)
-        guard let vc = sb.instantiateViewController(withIdentifier: "MovieDetailsVC") as? MovieDetailsVC else {
-            return
-        }
-        
-        let media = mediaContent[indexPath.row]
-        
-        vc.media = media
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}

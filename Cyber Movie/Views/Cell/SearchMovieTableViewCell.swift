@@ -22,18 +22,17 @@ class SearchMovieTableViewCell: UITableViewCell {
         setupUI()
     }
     
-    func configure(title: String, release: String, poster: String?, rating: String, votes: String) {
+    func configure(media: Media) {
+        movieTitleLabel.text = media.name
+        releaseYearLabel.text = convertDate(date: media.releaseDate)
+        movieRatingLabel.text = String(media.popularity)
+        movieVotesRatingLabel.text = "Votes: \(media.voteCount)"
         
-        movieTitleLabel.text = title
-        releaseYearLabel.text = convertDate(date: release)
-        movieRatingLabel.text = rating
-        movieVotesRatingLabel.text = "Votes: \(votes)"
+        let poster = media.posterPath
+        let posterPathString = Config.API_MOVIE_IMG_HOST + poster
+        let posterPath: URL? = URL(string: posterPathString)
+        movieImageView.sd_setImage(with: posterPath)
         
-        if let poster {
-            let posterPathString = Config.API_MOVIE_IMG_HOST + poster
-            let posterPath: URL? = URL(string: posterPathString)
-            movieImageView.sd_setImage(with: posterPath)
-        }
     }
     
     func setupUI() {
